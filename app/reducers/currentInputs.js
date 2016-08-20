@@ -1,8 +1,14 @@
+// a refinement of how to update this property
 const updateValueByType = ({state, property, value, type, ...actionDetails}) => ({
   [type]: () => value,
-  fileSearch: () => state.value && !state.value.match(/\/$/) && actionDetails.fileIsInDir ? `${value}/`.replace(/\/+/g, '/') : value
+  fileSearch: () => state.value &&
+    !state.value.match(/\/$/) &&
+    actionDetails.fileIsInDir ?
+      `${value}/`.replace(/\/+/g, '/') :
+      value
 }[type]())
 
+// logic to update property
 const updateProperty = ({
   state,
   property,
@@ -10,6 +16,7 @@ const updateProperty = ({
   ...actionDetails
 }) => ({
   [property]: () => value,
+  selectionStart: () => state.value.match(/\/$/) ? value + 1 : value,
   value: () => updateValueByType({
     state,
     property,
@@ -22,9 +29,11 @@ const updateProperty = ({
 const currentInputs = (state = [], {type, name, property, value, ...actionDetails}) => ({
   [type]: () => state,
   UPDATE_INPUT: () => [
-    ...state.filter(i => i.name !== name), // all inputs except the one to add or update
+    // all inputs except the one to add or update
+    ...state.filter(i => i.name !== name),
     {
-      ...state.find(i => i.name === name), // everything we know about this input
+      // everything we know about this input
+      ...state.find(i => i.name === name),
       name,
       [property]: updateProperty({
         ...actionDetails,

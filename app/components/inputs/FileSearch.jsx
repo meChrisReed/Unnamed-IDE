@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class FileSearch extends Component {
-  shouldComponentUpdate() {
-    console.log('wha?')
-    return false
+  componentDidMount() {
+    const textInput = document.querySelector(`[name=${this.props.name}]`)
+    textInput.setSelectionRange(this.props.selectionStart, this.props.selectionStart)
   }
 
   render() {
@@ -20,7 +20,7 @@ class FileSearch extends Component {
     return (
       <span>
         <input {...{
-          // autoFocus: focus,
+          autoFocus: focus,
           value,
           onChange: onPathChange,
           className,

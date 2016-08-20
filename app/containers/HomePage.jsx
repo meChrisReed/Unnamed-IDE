@@ -47,6 +47,11 @@ const HomePage = ({ currentInputs, updateInput, inputHasFocus }) => {
         fs.readdirSync(e.target.value) :
         filesInDir
     })
+    updateInput({
+      name,
+      property: 'selectionStart',
+      value: e.target.selectionStart
+    })
   }
 
   return (
@@ -55,6 +60,7 @@ const HomePage = ({ currentInputs, updateInput, inputHasFocus }) => {
       <br />
 
       <TransformingInput {...{
+        selectionStart: loadProjectInput && loadProjectInput.selectionStart,
         focus: loadProjectInput && loadProjectInput.focus,
         onClick: transformToFileSearch('load-project', 'new-project'),
         onPathChange: updatePath('load-project'),
@@ -65,6 +71,7 @@ const HomePage = ({ currentInputs, updateInput, inputHasFocus }) => {
       }}> Load Project </TransformingInput>
 
       <TransformingInput {...{
+        selectionStart: newProjectInput && newProjectInput.selectionStart,
         focus: newProjectInput && newProjectInput.focus,
         onClick: transformToFileSearch('new-project', 'load-project'),
         onPathChange: updatePath('new-project'),

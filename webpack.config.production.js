@@ -1,6 +1,7 @@
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import baseConfig from './webpack.config.base';
+import webpack from 'webpack'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import baseConfig from './webpack.config.base'
+import cssVariables from 'postcss-css-variables'
 
 const config = {
   ...baseConfig,
@@ -33,11 +34,14 @@ const config = {
         test: /^((?!\.global).)*\.css$/,
         loader: ExtractTextPlugin.extract(
           'style-loader',
-          'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+          'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+          'postcss-loader'
         )
       }
     ]
   },
+
+  postcss: () => [cssVariables],
 
   plugins: [
     ...baseConfig.plugins,
@@ -55,6 +59,6 @@ const config = {
   ],
 
   target: 'electron-renderer'
-};
+}
 
-export default config;
+export default config

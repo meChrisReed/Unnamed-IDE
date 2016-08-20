@@ -1,15 +1,15 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
+import styles from './App.css'
 
-export default class App extends Component {
-  static propTypes = {
-    children: PropTypes.element.isRequired
-  };
+import { connect } from 'react-redux'
 
-  render() {
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+const App = ({ children }) => (
+  <div className={styles.App}>
+    {children}
+  </div>
+)
+
+export default connect(
+  i=>({}),
+  i=>({})
+)(App)

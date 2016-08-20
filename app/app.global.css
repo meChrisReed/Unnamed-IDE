@@ -1,37 +1,31 @@
+:root {
+  /* Layout Colors */
+  --background-color: #F2F2F2;
+  --active-forefround: #E6E6E6;
+  --inactive-forefround: #D9D9D9;
+  --deliniation-of-layout: #2196F3;
+  --stand-out-color: #2196F3;
+
+  --input-background: #F2F2F2;
+  --input-bodrder-color:  #2196F3;
+
+  /* Typeography */
+  --basic-text-color: #0D0D0D;
+  --negative-text-color: #F2F2F2;
+
+
+  --shadow: 0px 2px 20px 0px rgba(0,0,0,0.4);
+}
+
 body {
-  position: relative;
-  color: white;
-  height: 100vh;
-  background-color: #232C39;
-  background-image: linear-gradient(45deg, rgba(0, 216, 255, .5) 10%, rgba(0, 1, 127, .7));
-  font-family: Arial, Helvetica, Helvetica Neue;
-  overflow-y: hidden;
-}
-
-h2 {
+  background: var(--background-color);
   margin: 0;
-  font-size: 2.25rem;
-  font-weight: bold;
-  letter-spacing: -.025em;
-  color: #fff;
+  font-family: 'Operator Mono';
+  color: var(--basic-text-color);
+  /* font-family: 'Marck Script', cursive; */
 }
-
-p {
-  font-size: 24px;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  color: white;
-  opacity: .75;
-  text-decoration: none;
-}
-
-a:hover {
-  opacity: 1;
-  text-decoration: none;
-  cursor: pointer;
+input, button {
+  font-family: 'Operator Mono';
+  color: var(--stand-out-color);
+  outline: none;
 }

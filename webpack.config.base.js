@@ -4,7 +4,7 @@ export default {
   module: {
     loaders: [{
       test: /\.jsx?$/,
-      loaders: ['babel-loader'],
+      loaders: ['react-hot', 'babel-loader'],
       exclude: /node_modules/
     }, {
       test: /\.json$/,

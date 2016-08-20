@@ -1,0 +1,23 @@
+.shadow {
+  box-sizing: border-box;
+  width: 100%;
+  display: inline-block;
+  cursor: pointer;
+  position: relative; /* context for :before */
+}
+
+.shadow:before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  display: block;
+  box-shadow: var(--shadow);
+  transition: opacity 0.3s, border-color 0.2s;
+  opacity: 0.01;
+  position: absolute;
+}
+.shadow:hover:before,
+.shadow:focus:before,
+.force:before  {
+    opacity: 1;
+}

@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import styles from './FileSearch.css'
+
 class FileSearch extends Component {
   componentDidMount() {
+    // place the cursor
     const textInput = document.querySelector(`[name=${this.props.name}]`)
     textInput.setSelectionRange(this.props.selectionStart, this.props.selectionStart)
   }
@@ -14,43 +17,36 @@ class FileSearch extends Component {
       name ,
       value,
       focus,
-      pathSearchResults
+      pathSearchResults,
+      hasErrors
     } = this.props;
 
     return (
-      <span>
+      <div className={styles.FileSearch}>
         <input {...{
           autoFocus: focus,
           value,
           onChange: onPathChange,
-          className,
+          className: [className, styles.textInput].join(" "),
           type: 'text',
           name,
           onClick: e => e.stopPropagation(),
           placeholder: 'Type Path to Project'
         }} />
-        <ul>
+        <ul className={styles.resultList}>
         {
+          !hasErrors &&
           pathSearchResults &&
-          pathSearchResults.length &&
-          pathSearchResults.filter(
-            // filter, saving strings that contain all of the letters from value
-            result => value.match(
-              /\/[^/]*$/
-            )[0].replace(
-              '/', ''
-            ).split('').reduce(
-              (pre, cur) => pre ? !!result.match(escape(cur)) : false,
-              true
-            )
-          ).map(
-            result => <li key={result}>{ result }</li>
-          )
+          pathSearchResults.length ?
+          pathSearchResults.map(
+            result => <li className={styles.result} key={result.fileName}>{ result.fileName }</li>
+          ) : ''
         }
+        { !hasErrors ? '' : <span>{pathSearchResults[0]}</span> }
         </ul>
-      </span>
+      </div>
     )
   }
 }
 
-export default connect(() => ({}), () => ({}))(FileSearch);
+export default FileSearch

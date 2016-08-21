@@ -1,29 +1,28 @@
 .widthEffect {
-  display: inline-block;
   padding: 0.9rem;
   overflow: hidden;
   width: 130px;
   transition: width 0.5s;
+  display: block;
+  position: relative;
+  float: left;
 }
 .TransformingInput {
   box-sizing: border-box;
   width: 100%;
   -webkit-user-select: none;
   user-select: none;
-  border: 1px solid var(--stand-out-color);
+  border: none;
   background: var(--input-background);
   display: inline-block;
   padding: 1rem;
   cursor: pointer;
   position: relative; /* context for :before */
 }
-.TransformingInput:hover {
-  border-color: var(--stand-out-color);
-}
 .TransformingInput:focus {
   background: hsl(0,0%,98%);
 }
 
 .text, .fileSearch {
-  width: 340px
+  width: 400px
 }

@@ -3,6 +3,7 @@
   width: 100%;
   display: inline-block;
   cursor: pointer;
+  border: 1px solid var(--stand-out-color);
   position: relative; /* context for :before */
 }
 

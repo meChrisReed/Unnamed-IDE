@@ -1,12 +1,21 @@
 // a refinement of how to update this property
-const updateValueByType = ({state, property, value, type, ...actionDetails}) => ({
+const updateValueByType = ({
+  state, // the previous state object
+  value, // the new value
+  type, // thetype of the input
+  ...actionDetails // additional details that are not used in every case
+}) => ({
+
   [type]: () => value,
+
   fileSearch: () => state.value &&
     !state.value.match(/\/$/) &&
     actionDetails.fileIsInDir ?
       `${value}/`.replace(/\/+/g, '/') :
       value
+
 }[type]())
+
 
 // logic to update property
 const updateProperty = ({
@@ -15,8 +24,11 @@ const updateProperty = ({
   value,
   ...actionDetails
 }) => ({
+
   [property]: () => value,
+
   selectionStart: () => state.value.match(/\/$/) ? value + 1 : value,
+
   value: () => updateValueByType({
     state,
     property,
@@ -24,10 +36,13 @@ const updateProperty = ({
     type: state.type,
     ...actionDetails
   })
+
 }[property]())
 
 const currentInputs = (state = [], {type, name, property, value, ...actionDetails}) => ({
+
   [type]: () => state,
+
   UPDATE_INPUT: () => [
     // all inputs except the one to add or update
     ...state.filter(i => i.name !== name),
@@ -43,6 +58,7 @@ const currentInputs = (state = [], {type, name, property, value, ...actionDetail
       })
     }
   ],
+
   UPDATE_INPUT_FOCUS: () => [
     ...state.filter(
       i => i.name !== name
@@ -58,6 +74,7 @@ const currentInputs = (state = [], {type, name, property, value, ...actionDetail
       focus: true
     }
   ]
+
 }[type]())
 
 export default currentInputs;

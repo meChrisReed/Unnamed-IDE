@@ -42,7 +42,7 @@ class FileSearch extends Component {
             result => <li className={styles.result} key={result.fileName}>{ result.fileName }</li>
           ) : ''
         }
-        { !hasErrors ? '' : <span>{pathSearchResults[0]}</span> }
+        { !hasErrors ? '' : <span className={styles.error}>{pathSearchResults[0]}</span> }
         </ul>
       </div>
     )

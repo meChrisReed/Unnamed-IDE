@@ -33,6 +33,7 @@ const updatePath = (name, updateInput) => e => {
   // mutate files in der for error handling
   let filesInDir
   let hasErrors = false
+
   try {
     if (e.target.value.match(/\/$/)) {
       filesInDir = fs.readdirSync(e.target.value)
@@ -66,14 +67,17 @@ const updatePath = (name, updateInput) => e => {
     value: e.target.value,
     fileIsInDir
   })
+  const pathSearchResults = fileIsInDir ?
+    fs.readdirSync(e.target.value).map(
+      result => ({ fileName: result })
+    ) :
+    filesInDir
   updateInput({
     name,
     property: 'pathSearchResults',
-    value: fileIsInDir ?
-      fs.readdirSync(e.target.value).map(
-        result => ({ fileName: result })
-      ) :
-      filesInDir
+    value: pathSearchResults.filter(
+      file => path.parse(file.fileName).ext === ''
+    )
   })
   updateInput({
     name,
@@ -81,6 +85,18 @@ const updatePath = (name, updateInput) => e => {
     value: e.target.selectionStart
   })
 }
+
+const populateTransformingInputData = (input, name, otherName, transformToFileSearch, updatePath, updateInput) => ({
+  hasErrors: input && input.hasErrors,
+  selectionStart: input && input.selectionStart,
+  focus: input && input.focus,
+  onClick: transformToFileSearch(name, otherName, updateInput),
+  onPathChange: updatePath(name, updateInput),
+  type: input ? input.type : 'button',
+  name: name,
+  value: input ? input.value : '',
+  pathSearchResults: input ? input.pathSearchResults : []
+})
 
 const HomePage = ({ currentInputs, updateInput, inputHasFocus }) => {
   const loadProjectInput = currentInputs.find(i => i.name === 'load-project')
@@ -91,29 +107,27 @@ const HomePage = ({ currentInputs, updateInput, inputHasFocus }) => {
       <Link to='/styleguide'> style guide </Link>
       <br />
 
-      <TransformingInput {...{
-        hasErrors: loadProjectInput && loadProjectInput.hasErrors,
-        selectionStart: loadProjectInput && loadProjectInput.selectionStart,
-        focus: loadProjectInput && loadProjectInput.focus,
-        onClick: transformToFileSearch('load-project', 'new-project', updateInput),
-        onPathChange: updatePath('load-project', updateInput),
-        type: loadProjectInput ? loadProjectInput.type : 'button',
-        name: 'load-project',
-        value: loadProjectInput ? loadProjectInput.value : '',
-        pathSearchResults: loadProjectInput ? loadProjectInput.pathSearchResults : []
-      }}> Load Project </TransformingInput>
+      <TransformingInput {
+        ...populateTransformingInputData(
+          loadProjectInput,
+          'load-project',
+          'new-project',
+          transformToFileSearch,
+          updatePath,
+          updateInput
+        )
+      }> Load Project </TransformingInput>
 
-      <TransformingInput {...{
-        hasErrors: newProjectInput && newProjectInput.hasErrors,
-        selectionStart: newProjectInput && newProjectInput.selectionStart,
-        focus: newProjectInput && newProjectInput.focus,
-        onClick: transformToFileSearch('new-project', 'load-project', updateInput),
-        onPathChange: updatePath('new-project', updateInput),
-        type: newProjectInput ? newProjectInput.type : 'button',
-        name: 'new-project',
-        value: newProjectInput ? newProjectInput.value : '',
-        pathSearchResults: newProjectInput ? newProjectInput.pathSearchResults : []
-      }}> New Project </TransformingInput>
+      <TransformingInput {
+        ...populateTransformingInputData(
+          newProjectInput,
+          'new-project',
+          'load-project',
+          transformToFileSearch,
+          updatePath,
+          updateInput
+        )
+      }> New Project </TransformingInput>
 
     </div>
   )

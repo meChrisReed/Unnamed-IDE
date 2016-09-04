@@ -29,12 +29,15 @@ const transformToFileSearch = (name, otherName, updateInput) => e => {
 // so mush mutation, error handling, need batch property update
 // seperate concerns
 const updatePath = (name, updateInput) => e => {
+  // TODO first falw is that it takes variable input types
+  // convert from event handler to action dispatcher
   const rawValue = typeof e === 'object' ? e.target.value : e
   const value = path.parse(rawValue)
   // mutate files in der for error handling
   let filesInDir
   let hasErrors = false
 
+  // TODO move this logic to the FileSearch component it is spesific to
   try {
     if (rawValue.match(/\/$/)) {
       filesInDir = fs.readdirSync(rawValue)
@@ -52,11 +55,21 @@ const updatePath = (name, updateInput) => e => {
         true
       )
     ).map(
-      result => ({ fileName: result })
+      result => ({
+        fileName: result,
+        score: value.name.split('').map(
+          (char, i) => result[i] === char ? 1 : 0
+        ).reduce(
+          (pre, cur) => pre + cur, 0
+        )
+      })
+    ).sort(
+      (a, b) => a - b
     )
   }
 
   const fileIsInDir = !!filesInDir.find(result => result.fileName === value.name)
+  // TODO all this function should do is dispatch actions, not format data and evaluate bools
   updateInput({
     name,
     property: 'hasErrors',

@@ -39,10 +39,10 @@ class FileSearch extends Component {
             e.preventDefault()
           },
           'Tab': e => {
+            e.preventDefault()
             const updatedPath = value.match(/\/$/) ?
               `${value}/${pathSearchResults[0].fileName}` :
               `${path.parse(value).dir}/${pathSearchResults[0].fileName}`
-            e.preventDefault()
             updateSelection(updatedPath.length + 1)
             onPathChange( updatedPath )
           }

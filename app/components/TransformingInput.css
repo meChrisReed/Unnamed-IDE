@@ -2,7 +2,7 @@
   padding: 0.9rem;
   overflow: hidden;
   width: 130px;
-  transition: width 0.5s;
+  transition: width 0.1s;
   display: block;
   position: relative;
   float: left;

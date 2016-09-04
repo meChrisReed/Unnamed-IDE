@@ -24,11 +24,8 @@ const updateProperty = ({
   value,
   ...actionDetails
 }) => ({
-
   [property]: () => value,
-
   selectionStart: () => state.value.match(/\/$/) ? value + 1 : value,
-
   value: () => updateValueByType({
     state,
     property,
@@ -36,7 +33,6 @@ const updateProperty = ({
     type: state.type,
     ...actionDetails
   })
-
 }[property]())
 
 const currentInputs = (state = [], {type, name, property, value, ...actionDetails}) => ({

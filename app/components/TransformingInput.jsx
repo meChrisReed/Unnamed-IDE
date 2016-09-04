@@ -5,30 +5,14 @@ import styles from './TransformingInput.css'
 
 import Shadow from './Shadow.jsx'
 import FileSearch from './inputs/FileSearch.jsx'
+import Button from './inputs/Button.jsx'
+import Text from './inputs/Text.jsx'
 
 const inputDictionary = type => ({
   [type]: () => <p> unsuported input transformation: {type+''} </p>,
-  button: ({ children, className, onClick, name }) =>
-    <button {...{
-      children,
-      className,
-      onClick,
-      name
-    }}></button>,
-
+  button: props => <Button {...props}/>,
   fileSearch: props => <FileSearch {...props}/>,
-
-  text: ({ className, name, focus }) =>
-    <input {...{
-      autoFocus: focus,
-      className: [
-        className,
-        styles.text
-      ].join(' '),
-      name,
-      type: 'text',
-      placeholder: 'Type text'
-    }} />
+  text: props => <Text {...props}/>
 }[type])
 
 const TransformingInput = props => {

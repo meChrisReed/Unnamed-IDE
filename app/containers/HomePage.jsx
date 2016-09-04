@@ -29,14 +29,15 @@ const transformToFileSearch = (name, otherName, updateInput) => e => {
 // so mush mutation, error handling, need batch property update
 // seperate concerns
 const updatePath = (name, updateInput) => e => {
-  const value = path.parse(e.target.value)
+  const rawValue = typeof e === 'object' ? e.target.value : e
+  const value = path.parse(rawValue)
   // mutate files in der for error handling
   let filesInDir
   let hasErrors = false
 
   try {
-    if (e.target.value.match(/\/$/)) {
-      filesInDir = fs.readdirSync(e.target.value)
+    if (rawValue.match(/\/$/)) {
+      filesInDir = fs.readdirSync(rawValue)
     }
     filesInDir = fs.readdirSync(value.dir)
   } catch (err) {
@@ -64,7 +65,7 @@ const updatePath = (name, updateInput) => e => {
   updateInput({
     name,
     property: 'value',
-    value: e.target.value,
+    value: rawValue,
     fileIsInDir
   })
   const pathSearchResults =
@@ -73,7 +74,7 @@ const updatePath = (name, updateInput) => e => {
     property: 'pathSearchResults',
     value: (
       fileIsInDir ?
-        fs.readdirSync(e.target.value).map(
+        fs.readdirSync(rawValue).map(
           result => ({ fileName: result })
         ) :
         filesInDir
@@ -81,7 +82,7 @@ const updatePath = (name, updateInput) => e => {
         file => path.parse(file.fileName || '').ext === ''
       )
   })
-  updateInput({
+  e.target && updateInput({
     name,
     property: 'selectionStart',
     value: e.target.selectionStart
@@ -97,7 +98,12 @@ const populateTransformingInputData = (input, name, otherName, transformToFileSe
   type: input ? input.type : 'button',
   name: name,
   value: input ? input.value : '',
-  pathSearchResults: input ? input.pathSearchResults : []
+  pathSearchResults: input ? input.pathSearchResults : [],
+  updateSelection: selectionStart => updateInput({
+    name,
+    property: 'selectionStart',
+    value: selectionStart
+  })
 })
 
 const HomePage = ({ currentInputs, updateInput, inputHasFocus }) => {
@@ -106,9 +112,6 @@ const HomePage = ({ currentInputs, updateInput, inputHasFocus }) => {
 
   return (
     <div>
-      <Link to='/styleguide'> style guide </Link>
-      <br />
-
       <TransformingInput {
         ...populateTransformingInputData(
           loadProjectInput,

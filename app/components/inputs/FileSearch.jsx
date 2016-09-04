@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import path from 'path'
 
 import styles from './FileSearch.css'
 
@@ -7,11 +8,19 @@ class FileSearch extends Component {
   componentDidMount() {
     // place the cursor
     const textInput = document.querySelector(`[name=${this.props.name}]`)
-    textInput && textInput.setSelectionRange(this.props.selectionStart, this.props.selectionStart)
+
+    if(textInput.selectionStart) {
+      textInput.focus();
+      textInput.setSelectionRange(this.props.selectionStart, this.props.selectionStart);
+    } else {
+      textInput.focus();
+    }
   }
 
   render() {
+    // convert to accept functions to update values
     const {
+      updateSelection,
       onPathChange,
       className,
       name,
@@ -22,7 +31,24 @@ class FileSearch extends Component {
     } = this.props;
 
     return (
-      <div className={styles.FileSearch}>
+      <div
+        className={styles.FileSearch}
+        onKeyDown={ e => ({
+          [e.key]: e => e,
+          'ArrowDown': e => {
+            e.preventDefault()
+          },
+          'Tab': e => {
+            const updatedPath = value.match(/\/$/) ?
+              `${value}/${pathSearchResults[0].fileName}` :
+              `${path.parse(value).dir}/${pathSearchResults[0].fileName}`
+            e.preventDefault()
+            updateSelection(updatedPath.length + 1)
+            onPathChange( updatedPath )
+          }
+
+        }[e.key](e))}
+      >
         <input {...{
           autoFocus: focus,
           value,

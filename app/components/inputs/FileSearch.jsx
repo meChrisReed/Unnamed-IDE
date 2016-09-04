@@ -7,14 +7,14 @@ class FileSearch extends Component {
   componentDidMount() {
     // place the cursor
     const textInput = document.querySelector(`[name=${this.props.name}]`)
-    textInput.setSelectionRange(this.props.selectionStart, this.props.selectionStart)
+    textInput && textInput.setSelectionRange(this.props.selectionStart, this.props.selectionStart)
   }
 
   render() {
     const {
       onPathChange,
       className,
-      name ,
+      name,
       value,
       focus,
       pathSearchResults,

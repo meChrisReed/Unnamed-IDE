@@ -4,6 +4,7 @@
 }
 .textInput {
   background: hsl(0,0%,98%);
+  width: 400px;
 }
 .resultList {
   margin: 0;

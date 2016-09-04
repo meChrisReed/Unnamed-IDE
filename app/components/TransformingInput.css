@@ -12,10 +12,11 @@
   width: 100%;
   -webkit-user-select: none;
   user-select: none;
-  border: none;
+  border: 1px solid var(--stand-out-color);
   background: var(--input-background);
   display: inline-block;
   padding: 1rem;
+
   cursor: pointer;
   position: relative; /* context for :before */
 }

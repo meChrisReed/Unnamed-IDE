@@ -6,7 +6,6 @@ import fs from 'fs'
 import path from 'path'
 
 import TransformingInput from '../components/TransformingInput'
-import Dialoge from '../components/Dialoge'
 import updateInput from '../actions/updateInput'
 import inputHasFocus from '../actions/inputHasFocus'
 
@@ -28,6 +27,7 @@ const transformToFileSearch = (name, otherName, updateInput) => e => {
 
 // TDOD: WOW this function needs work
 // so mush mutation, error handling, need batch property update
+// seperate concerns
 const updatePath = (name, updateInput) => e => {
   const value = path.parse(e.target.value)
   // mutate files in der for error handling
@@ -67,17 +67,19 @@ const updatePath = (name, updateInput) => e => {
     value: e.target.value,
     fileIsInDir
   })
-  const pathSearchResults = fileIsInDir ?
-    fs.readdirSync(e.target.value).map(
-      result => ({ fileName: result })
-    ) :
-    filesInDir
+  const pathSearchResults =
   updateInput({
     name,
     property: 'pathSearchResults',
-    value: pathSearchResults.filter(
-      file => path.parse(file.fileName).ext === ''
-    )
+    value: (
+      fileIsInDir ?
+        fs.readdirSync(e.target.value).map(
+          result => ({ fileName: result })
+        ) :
+        filesInDir
+      ).filter(
+        file => path.parse(file.fileName || '').ext === ''
+      )
   })
   updateInput({
     name,

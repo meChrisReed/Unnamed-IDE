@@ -3,8 +3,8 @@ import path from 'path'
 
 import styles from './TransformingInput.css'
 
-import Shadow from './Shadow'
-import FileSearch from './inputs/FileSearch'
+import Shadow from './Shadow.jsx'
+import FileSearch from './inputs/FileSearch.jsx'
 
 const inputDictionary = type => ({
   [type]: () => <p> unsuported input transformation: {type+''} </p>,
@@ -21,7 +21,10 @@ const inputDictionary = type => ({
   text: ({ className, name, focus }) =>
     <input {...{
       autoFocus: focus,
-      className,
+      className: [
+        className,
+        styles.text
+      ].join(' '),
       name,
       type: 'text',
       placeholder: 'Type text'

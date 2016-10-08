@@ -1,7 +1,7 @@
-import React, { Component, PropTypes } from 'react'
-import styles from './index.css'
-
+import React from 'react'
 import { connect } from 'react-redux'
+
+import styles from './index.css'
 
 const App = ({ children }) => (
   <div className={styles.App}>
@@ -9,4 +9,7 @@ const App = ({ children }) => (
   </div>
 )
 
-export default App
+export default connect(
+  () => ({}),
+  () => ({})
+)(App)

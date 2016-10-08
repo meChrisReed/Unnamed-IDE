@@ -1,3 +1,11 @@
 :root {
-
+  --background-color: #546E7A;
+  --border-color: #00BFA5;
+  --basic-text-color: #F5F5F5;
+  --interact-background: #455A64;
+  --card-background-color: #455A64;
+  --bright-color: #64FFDA;
+}
+body {
+  background: var(--background-color);
 }

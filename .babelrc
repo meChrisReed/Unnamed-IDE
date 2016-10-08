@@ -1,10 +1,11 @@
 {
   "presets": ["es2015", "stage-0", "react"],
-  "plugins": ["add-module-exports"],
+  "plugins": ["transform-decorators-legacy","add-module-exports"],
   "env": {
   	"production": {
   		"presets": ["react-optimize"],
   		"plugins": [
+				"transform-decorators-legacy",
   			"babel-plugin-transform-remove-console",
   			"babel-plugin-transform-remove-debugger",
   			"babel-plugin-dev-expression"
@@ -16,6 +17,7 @@
     "test": {
       "plugins": [
         [
+					"transform-decorators-legacy",
           "webpack-loaders",
           { "config": "webpack.config.node.js", "verbose": false }
         ]

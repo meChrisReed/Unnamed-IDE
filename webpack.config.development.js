@@ -24,7 +24,10 @@ const config = {
     ...baseConfig.module,
     loaders: [
       ...baseConfig.module.loaders,
-
+      {
+        test: /\.svg$/,
+        loader: 'raw-loader'
+      },
       {
         test: /\.global\.css$/,
         loaders: [

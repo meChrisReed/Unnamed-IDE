@@ -1,0 +1,8 @@
+.Icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--bright-color);
+}
+.context {
+  position: absolute;
+}

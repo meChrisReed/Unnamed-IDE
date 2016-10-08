@@ -5,12 +5,20 @@ import infoAddon from '@kadira/react-storybook-addon-info'
 
 import globalCss from '../app/app.global.css'
 
-// TODO crawl file system
-import shadowStories from './stylize/shadow.jsx'
-import transformingInputStories from './inputs/transformingInput.jsx'
-import fileSearchStories from './inputs/fileSearch.jsx'
+import buttonStories from './inputs/buttonStories.jsx'
+import shadowStories from './stylize/shadowStories.jsx'
+import cardStories from './stylize/cardStories.jsx'
+import iconStories from './icons/iconStories.jsx'
 
 setAddon(infoAddon)
+
+buttonStories({
+  storiesOf: storiesOf(
+    'Button', module
+  ).addDecorator(
+    centered
+  )
+})
 
 shadowStories({
   storiesOf: storiesOf(
@@ -20,17 +28,17 @@ shadowStories({
   )
 })
 
-transformingInputStories({
+cardStories({
   storiesOf: storiesOf(
-    'Transforming Input', module
+    'Card', module
   ).addDecorator(
     centered
   )
 })
 
-fileSearchStories({
+iconStories({
   storiesOf: storiesOf(
-    'File Search', module
+    'Icon', module
   ).addDecorator(
     centered
   )

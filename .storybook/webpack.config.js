@@ -13,6 +13,10 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: /\.svg$/,
+        loader: 'raw-loader'
+      },
+      {
         test: /\.global\.css$/,
         loaders: [
           'style-loader',

@@ -1,5 +1,21 @@
 import React from 'react'
 
-const TextInput = ({...props}) => <input {...props} type='text' />
+import styles from './TextInput.css'
+import Icon from '../elements/Icon'
+
+const TextInput = ({className, ...props}) => <div
+	className={[
+		className,
+		styles.TextInput
+	].join(' ')}
+>
+	<Icon name='pencil' className={styles.Icon}/>
+	<input
+		{...props}
+		className={styles.input}
+		placeholder='Path to project'
+		type='text'
+	/>
+</div>
 
 export default TextInput

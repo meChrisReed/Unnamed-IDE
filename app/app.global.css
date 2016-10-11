@@ -5,6 +5,7 @@
   --interact-background: #455A64;
   --card-background-color: #455A64;
   --bright-color: #64FFDA;
+	--dark-background: #37474F;
 }
 body {
   background: var(--background-color);

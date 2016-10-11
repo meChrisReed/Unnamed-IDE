@@ -1,0 +1,18 @@
+.TextInput {
+	--line-height: 48px;
+	background: var(--dark-background);
+}
+.input {
+	background: transparent;
+	color: var(--basic-text-color);
+	line-height: var(--line-height);
+	padding: 0;
+	border: 0;
+	outline: none;
+
+	width: calc(100% - 48px);
+}
+.Icon {
+	display: inline-block;
+	margin: -6px 10px;
+}

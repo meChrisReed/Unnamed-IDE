@@ -1,0 +1,4 @@
+.ListItem {
+	line-height: 42px;
+	color: var(--basic-text-color);
+}

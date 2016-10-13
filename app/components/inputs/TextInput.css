@@ -14,5 +14,7 @@
 }
 .Icon {
 	display: inline-block;
-	margin: -6px 10px;
+	margin: 0 12px;
+	top: 6px;
+	position: relative;
 }

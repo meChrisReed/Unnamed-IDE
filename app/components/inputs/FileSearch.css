@@ -1,6 +1,14 @@
-.FileSearch {
-
-}
 .TextInput {
+	top: 0;
+	position: absolute;
 	width: 500px;
+}
+.Card {
+	padding-top: 48px;
+	max-height: 80vh;
+	width: 500px;
+	overflow-y: scroll;
+}
+.Card::-webkit-scrollbar {
+	width: 0;
 }

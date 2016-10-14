@@ -85,16 +85,20 @@ const FileSearch = ({ ui, updateUI }) => <Card
 		value={ui.valueToSearch}
 		onChange={
 			e => {
-
 				const results = findResults(e.currentTarget.value, ui.results)
 
 				const valueToSearch = results.length === 1 ?
 					`${path.parse(e.currentTarget.value).dir}/${results[0]}/`.replace('//', '/') :
 					e.currentTarget.value
 
+				const finalResults = findResults(valueToSearch, ui.results)
 				updateUI({
 					valueToSearch: tryResults(valueToSearch) ? valueToSearch : e.currentTarget.value,
-					results: findResults(valueToSearch, ui.results)
+					results: finalResults,
+					selectedResultIndex: {
+						[true]: ui.selectedResultIndex,
+						[ui.selectedResultIndex >= finalResults.length -1]: finalResults.length -1
+					}[true]
 				})
 			}
 		}
@@ -113,13 +117,9 @@ const FileSearch = ({ ui, updateUI }) => <Card
 							const parsed = path.parse(ui.valueToSearch)
 							const dir = parsed.dir
 							const base = ui.valueToSearch.match(/\/$/) ? parsed.base : ''
-							console.log({
-								parsed,
-								dir,
-								base
-							})
 							const valueToSearch = `${dir}/${base}/${result}/`.replace(/\/+/g, '/')
 							const results = findResults(valueToSearch, ui.results)
+
 							updateUI({
 								valueToSearch,
 								results

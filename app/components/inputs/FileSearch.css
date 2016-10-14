@@ -12,12 +12,14 @@
 .Card::-webkit-scrollbar {
 	width: 0;
 }
-.selectedResult {
-	background: var(--dark-background);
-}
+
 .clickable {
 	cursor: pointer;
 }
 .clickable:hover {
 	background: var(--raised-higher-background);
+}
+.selectedResult,
+.selectedResult:hover {
+	background: var(--dark-background);
 }

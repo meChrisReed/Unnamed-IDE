@@ -2,10 +2,12 @@
   --background-color: #546E7A;
   --border-color: #00BFA5;
   --basic-text-color: #F5F5F5;
-  --interact-background: #455A64;
+	--raised-background: #455A64;
+  --raised-higher-background: #415660;
   --card-background-color: #455A64;
   --bright-color: #64FFDA;
 	--dark-background: #37474F;
+	--line-height: 48px;
 }
 body {
   background: var(--background-color);

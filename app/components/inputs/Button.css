@@ -1,13 +1,16 @@
 .Button {
-  border: 2px solid var(--border-color);
-  background: transparent;
+  border: none;
+  background: var(--raised-background);
   color: var(--basic-text-color);
   /* TODO Iether install with package or include import */
   font-family: 'Fira Code';
-  padding: 13px;
-  transition: background 0.25s;
+  padding: 0 13px;
+  transition: background 0.3s;
+	border-radius: 3px;
 	cursor: pointer;
+	outline: none;
+	line-height: var(--line-height);
 }
 .Button:hover, .Button:focus {
-  background: var(--interact-background);
+  background: var(--raised-higher-background);
 }

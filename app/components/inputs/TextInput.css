@@ -1,5 +1,4 @@
 .TextInput {
-	--line-height: 48px;
 	background: var(--dark-background);
 }
 .input {

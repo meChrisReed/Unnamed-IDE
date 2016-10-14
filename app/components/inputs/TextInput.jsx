@@ -13,7 +13,6 @@ const TextInput = ({className, ...props}) => <div
 	<input
 		{...props}
 		className={styles.input}
-		placeholder='Path to project'
 		type='text'
 	/>
 </div>

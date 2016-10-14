@@ -7,7 +7,7 @@ import FileSearch from '../../components/inputs/FileSearch'
 
 const CleanOpen = ({ ui, updateUI }) => <div>
   {
-		ui.loadingProject ? <FileSearch /> :
+		ui.loadingProject ? <FileSearch userInstruction='Enter path to load project from' /> :
 		<Button
 			onClick={
 				() => updateUI({
@@ -19,7 +19,7 @@ const CleanOpen = ({ ui, updateUI }) => <div>
 	}
 
 	{
-		ui.creatingNewProject ? <FileSearch /> :
+		ui.creatingNewProject ? <FileSearch userInstruction='Enter path to create project at' /> :
 		<Button
 			onClick={
 				() => updateUI({

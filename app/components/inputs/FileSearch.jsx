@@ -35,7 +35,7 @@ const findResults = (value, previousResults) => tryResults(
 		).length >= path.parse(value).base.length
 )
 
-const FileSearch = ({ ui, updateUI }) => <Card
+const FileSearch = ({ ui, updateUI, userInstruction }) => <Card
 	className={styles.Card}
 	onKeyDown={
 		e => {
@@ -50,9 +50,13 @@ const FileSearch = ({ ui, updateUI }) => <Card
 					0
 			}
 			const lookupResultIndex = selectedResultIndexDictionary[e.keyCode]
+
+			const parsed = path.parse(ui.valueToSearch)
+			const dir = parsed.dir
+			const base = ui.valueToSearch.match(/\/$/) ? parsed.base : ''
 			const valueToSearchDictionary = {
 				// tab
-				[9]: `${path.parse(ui.valueToSearch).dir}/${ui.results[ui.selectedResultIndex]}/`.replace('//', '/')
+				[9]: `${dir}/${base}/${ui.results[ui.selectedResultIndex]}/`.replace(/\/+/g, '/')
 			}
 			const lookupValueToSearch = valueToSearchDictionary[e.keyCode]
 
@@ -80,6 +84,7 @@ const FileSearch = ({ ui, updateUI }) => <Card
 	}
 >
 	<TextInput
+		placeholder={userInstruction}
 		autoFocus={true}
 		className={styles.TextInput}
 		value={ui.valueToSearch}

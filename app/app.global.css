@@ -12,3 +12,29 @@
 body {
   background: var(--background-color);
 }
+::-webkit-scrollbar {
+	width: 1px;
+	background: transparent;
+}
+::-webkit-scrollbar-button {
+	height: 0;
+	background: transparent;
+}
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+::-webkit-scrollbar-track-piece {
+	height: 0;
+	background: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background: var(--bright-color);
+}
+::-webkit-scrollbar-corner {
+	height: 0;
+	background: transparent;
+}
+::-webkit-resizer {
+	height: 0;
+	background: transparent;
+}

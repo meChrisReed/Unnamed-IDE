@@ -1,114 +1,52 @@
+// node lib
 import fs from 'fs'
 import path from 'path'
-
+// stack modules
 import React, { Component } from 'react'
 import ui from 'redux-ui'
 
+// project components
 import Card from '../stylize/Card.jsx'
 import TextInput from './TextInput.jsx'
 import List from '../typeography/List'
 import ListItem from '../typeography/ListItem'
 
+// styles
 import styles from './FileSearch.css'
 
-const tryResults = (value, previousResults) => {
-	if (!value.match(/\/$/)) {
-		return previousResults
-	}
-	let results = previousResults
-	try {
-		results = fs.readdirSync(value)
-	} catch(e) {}
-	return results
-}
+// api
+import tryResults from './FileSearch/tryResults'
+import findResults from './FileSearch/findResults'
 
-const findResults = (value, previousResults) => tryResults(
-	value,
-	previousResults
-).filter( // remove all private files
-	fileName => !fileName.match(/^\./)
-).filter(
-	// filter the strings that contain at least one char from the value
-	fileName => !!value.match(/\/$/) ||
-		fileName.split('').filter(
-			letter => path.parse(value).base.split('').includes(letter)
-		).length >= path.parse(value).base.length
-)
+// event handlers
+import handleKeyInput from './FileSearch/handleKeyInput'
+import handleTextChange from './FileSearch/handleTextChange'
+import handleClick from './FileSearch/handleClick'
 
-const FileSearch = ({ ui, updateUI, userInstruction }) => <Card
+//   FileSearch is a vissual component that is composed of a text input and a
+// list. FileSearch handles key, mouse and change events. FileSearch uses the
+// node apis for file search 'fs' and path parseing 'path'.
+//
+// Interface:
+// userInstruction::string -- Value used as placeholder content. userInstruction
+// should provide insinstructtions to help the user correctly enter text.
+
+const FileSearch = ({
+	ui,
+	updateUI,
+	userInstruction
+}) => <Card
 	className={styles.Card}
-	onKeyDown={
-		e => {
-			const selectedResultIndexDictionary = {// look up the key pressed and handle it,
-				// press down
-				[40]: ui.selectedResultIndex < ui.results.length - 1 ?
-					ui.selectedResultIndex + 1 :
-					ui.selectedResultIndex,
-				// press up
-				[38]: ui.selectedResultIndex > 1 ?
-					ui.selectedResultIndex - 1 :
-					0
-			}
-			const lookupResultIndex = selectedResultIndexDictionary[e.keyCode]
-
-			const parsed = path.parse(ui.valueToSearch)
-			const dir = parsed.dir
-			const base = ui.valueToSearch.match(/\/$/) ? parsed.base : ''
-			const valueToSearchDictionary = {
-				// tab
-				[9]: `${dir}/${base}/${ui.results[ui.selectedResultIndex]}/`.replace(/\/+/g, '/')
-			}
-			const lookupValueToSearch = valueToSearchDictionary[e.keyCode]
-
-			if (
-				Object.getOwnPropertyNames({
-					...selectedResultIndexDictionary,
-					...valueToSearchDictionary
-				}).includes(
-					e.keyCode.toString()
-				)
-			) {
-				e.preventDefault()
-			}
-
-			return updateUI({
-				valueToSearch: lookupValueToSearch || ui.valueToSearch,
-				results: lookupValueToSearch ?
-					findResults(lookupValueToSearch, ui.results):
-					ui.results,
-				selectedResultIndex: lookupResultIndex === 0 ?
-					lookupResultIndex :
-					lookupResultIndex || ui.selectedResultIndex
-			})
-		}
-	}
+	onKeyDown={e => handleKeyInput(e, ui, updateUI)}
 >
 	<TextInput
 		placeholder={userInstruction}
 		autoFocus={true}
 		className={styles.TextInput}
 		value={ui.valueToSearch}
-		onChange={
-			e => {
-				const results = findResults(e.currentTarget.value, ui.results)
-
-				const valueToSearch = results.length === 1 ?
-					`${path.parse(e.currentTarget.value).dir}/${results[0]}/`.replace('//', '/') :
-					e.currentTarget.value
-
-				const finalResults = findResults(valueToSearch, ui.results)
-				updateUI({
-					valueToSearch: tryResults(valueToSearch) ? valueToSearch : e.currentTarget.value,
-					results: finalResults,
-					selectedResultIndex: {
-						[true]: ui.selectedResultIndex,
-						[ui.selectedResultIndex >= finalResults.length -1]: finalResults.length -1
-					}[true]
-				})
-			}
-		}
+		onChange={e => handleTextChange(e, ui, updateUI)}
 	/>
-<List>
+<List className={styles.List}>
 		{
 			ui.results.map(
 				(result, i) => <ListItem
@@ -118,20 +56,7 @@ const FileSearch = ({ ui, updateUI, userInstruction }) => <Card
 					].join(' ')}
 					key={result}
 					scrollIntoView={i === ui.selectedResultIndex}
-					onClick={
-						e => {
-							const parsed = path.parse(ui.valueToSearch)
-							const dir = parsed.dir
-							const base = ui.valueToSearch.match(/\/$/) ? parsed.base : ''
-							const valueToSearch = `${dir}/${base}/${result}/`.replace(/\/+/g, '/')
-							const results = findResults(valueToSearch, ui.results)
-
-							updateUI({
-								valueToSearch,
-								results
-							})
-						}
-					}
+					onClick={e => handleClick(ui, updateUI, result)}
 				>{ result }</ListItem>
 			)
 		}

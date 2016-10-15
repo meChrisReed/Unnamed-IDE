@@ -9,6 +9,10 @@ import findResults from './findResults'
 // ui::object -- existing ui store
 // updateUI::function -- updates ui store
 const handleKeyInput = (e, ui, updateUI) => {
+	// if shift key is active, assume the user does not want to use this component
+	if (e.shiftKey) {
+		return
+	}
 	// selectedResultIndexDictionary::object -- a dictionary of key codes and the
 	// selectedResultIndex store transformation they represent.
 	const selectedResultIndexDictionary = {
@@ -32,9 +36,10 @@ const handleKeyInput = (e, ui, updateUI) => {
 	// valueToSearch store transformation they represent.
 	const valueToSearchDictionary = {
 		// press tab
-		[9]: `${dir}/${base}/${ui.results[ui.selectedResultIndex]}/`.replace(/\/+/g, '/')
+		[9]: `${dir}/${base}/${ui.results[ui.selectedResultIndex] || ''}/`.replace(/\/+/g, '/')
 	}
 	const lookupValueToSearch = valueToSearchDictionary[e.keyCode]
+	console.log(lookupValueToSearch|| ui.valueToSearch)
 
 	if ( // if this key is in one of our dictionaries
 		Object.getOwnPropertyNames({

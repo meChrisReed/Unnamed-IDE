@@ -30,7 +30,6 @@ import handleClick from './FileSearch/handleClick'
 // Interface:
 // userInstruction::string -- Value used as placeholder content. userInstruction
 // should provide insinstructtions to help the user correctly enter text.
-
 const FileSearch = ({
 	ui,
 	updateUI,

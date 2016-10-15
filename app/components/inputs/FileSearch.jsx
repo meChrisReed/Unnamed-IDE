@@ -117,6 +117,7 @@ const FileSearch = ({ ui, updateUI, userInstruction }) => <Card
 						styles.clickable
 					].join(' ')}
 					key={result}
+					scrollIntoView={i === ui.selectedResultIndex}
 					onClick={
 						e => {
 							const parsed = path.parse(ui.valueToSearch)

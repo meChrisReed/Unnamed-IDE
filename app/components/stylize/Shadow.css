@@ -14,7 +14,7 @@
   display: block;
   position: absolute;
 	border-radius: 3px;
-  box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.15), 0px 6px 14px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 1px 9px 0px rgba(0,0,0,0.15), 0px 6px 14px -1px rgba(0,0,0,0.2);
   opacity: 0.01;
   transition: opacity 0.25s;
 }

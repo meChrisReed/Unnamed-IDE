@@ -9,8 +9,33 @@
 	width: 500px;
 	overflow-y: scroll;
 }
-.Card::-webkit-scrollbar {
-	width: 0;
+::-webkit-scrollbar {
+	width: 1px;
+	position: absolute;
+	background: transparent;
+}
+::-webkit-scrollbar-button {
+	position: absolute;
+	background: transparent;
+}
+::-webkit-scrollbar-track {
+	position: absolute;
+	background: transparent;
+}
+::-webkit-scrollbar-track-piece {
+	position: absolute;
+	background: transparent;
+}
+::-webkit-scrollbar-thumb {
+	position: absolute;
+	width: 16px;
+	background: var(--bright-color);
+}
+::-webkit-scrollbar-corner {
+	background: transparent;
+}
+::-webkit-resizer {
+	background: transparent;
 }
 
 .clickable {

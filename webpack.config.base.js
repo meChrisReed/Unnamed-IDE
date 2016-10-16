@@ -18,7 +18,11 @@ export default {
   },
   resolve: {
     extensions: ['', '.js', '.jsx', '.json'],
-    packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main']
+    packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main'],
+		root: [
+			// resolve static paths relative to the current working directory
+			path.resolve('./')
+		],
   },
   plugins: [
 

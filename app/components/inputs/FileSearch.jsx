@@ -4,12 +4,17 @@ import path from 'path'
 // stack modules
 import React, { Component } from 'react'
 import ui from 'redux-ui'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 // project components
 import Card from '../stylize/Card.jsx'
 import TextInput from './TextInput.jsx'
 import List from '../typeography/List'
 import ListItem from '../typeography/ListItem'
+
+// project actions
+import asyncLoadProject from 'app/actions/asyncLoadProject'
 
 // styles
 import styles from './FileSearch.css'
@@ -33,10 +38,11 @@ import handleClick from './FileSearch/handleClick'
 const FileSearch = ({
 	ui,
 	updateUI,
-	userInstruction
+	userInstruction,
+	asyncLoadProject
 }) => <Card
 	className={styles.Card}
-	onKeyDown={e => handleKeyInput(e, ui, updateUI)}
+	onKeyDown={e => handleKeyInput({ e, ui, updateUI, asyncLoadProject })}
 >
 	<TextInput
 		placeholder={userInstruction}
@@ -72,4 +78,9 @@ const FileSearchUi = ui({
 })(FileSearch)
 
 
-export default FileSearchUi
+export default connect(
+	state => ({}),
+	dispatch => bindActionCreators({
+		asyncLoadProject
+	}, dispatch)
+)(FileSearchUi)

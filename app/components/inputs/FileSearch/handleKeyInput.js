@@ -8,11 +8,20 @@ import findResults from './findResults'
 // e::object -- synthetic event that contains key press data
 // ui::object -- existing ui store
 // updateUI::function -- updates ui store
-const handleKeyInput = (e, ui, updateUI) => {
+const handleKeyInput = ({ e, ui, updateUI, asyncLoadProject }) => {
 	// if shift key is active, assume the user does not want to use this component
 	if (e.shiftKey) {
 		return
 	}
+	const controlDictionary = {
+		// press enter/return
+		[13]: () => asyncLoadProject(ui.valueToSearch)
+	}
+	const lookupControll = controlDictionary[e.keyCode]
+	if (typeof lookupControll === 'function') {
+		return lookupControll()
+	}
+
 	// selectedResultIndexDictionary::object -- a dictionary of key codes and the
 	// selectedResultIndex store transformation they represent.
 	const selectedResultIndexDictionary = {
@@ -39,7 +48,6 @@ const handleKeyInput = (e, ui, updateUI) => {
 		[9]: `${dir}/${base}/${ui.results[ui.selectedResultIndex] || ''}/`.replace(/\/+/g, '/')
 	}
 	const lookupValueToSearch = valueToSearchDictionary[e.keyCode]
-	console.log(lookupValueToSearch|| ui.valueToSearch)
 
 	if ( // if this key is in one of our dictionaries
 		Object.getOwnPropertyNames({

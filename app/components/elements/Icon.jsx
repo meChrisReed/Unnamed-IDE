@@ -5,11 +5,12 @@ import pencil from '../../../assets/svg/pencil.svg'
 
 import style from './Icon.css'
 
-const Icon = ({ name, className }) => <span
+const Icon = ({ name, className, ...props }) => <span
 	className={[
 		className,
 		style.Icon
 	].join(' ')}
+	{...props}
 >
   <SVGInline
 		className={[

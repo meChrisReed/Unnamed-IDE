@@ -9,6 +9,7 @@ import buttonStories from './inputs/buttonStories.jsx'
 import shadowStories from './stylize/shadowStories.jsx'
 import cardStories from './stylize/cardStories.jsx'
 import iconStories from './icons/iconStories.jsx'
+import progressBarStories from './elements/progressBarStories.jsx'
 
 setAddon(infoAddon)
 
@@ -39,6 +40,14 @@ cardStories({
 iconStories({
   storiesOf: storiesOf(
     'Icon', module
+  ).addDecorator(
+    centered
+  )
+})
+
+progressBarStories({
+  storiesOf: storiesOf(
+    'Progress Bar', module
   ).addDecorator(
     centered
   )

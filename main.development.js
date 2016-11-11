@@ -67,6 +67,12 @@ app.on('ready', async () => {
 
   if (process.platform === 'darwin') {
     template = [{
+      label: 'Unnamed-Ide',
+      submenu: [{
+        label: 'cleanOpen',
+        selector: 'orderFrontStandardAboutPanel:'
+      }]
+    }, {
       label: 'Electron',
       submenu: [{
         label: 'About ElectronReact',

@@ -1,5 +1,6 @@
 import React from 'react'
 
+import Card from '../../app/components/stylize/Card.jsx'
 import Shadow from '../../app/components/stylize/Shadow.jsx'
 import Icon from '../../app/components/elements/Icon.jsx'
 
@@ -10,7 +11,9 @@ const buttonStories = ({
 }) => storiesOf.addWithInfo(
   'default',
   () => (
-    <Icon/>
+    <Icon name='pencil' style={{
+				float: 'left'
+			}}/>
   )
 )
 

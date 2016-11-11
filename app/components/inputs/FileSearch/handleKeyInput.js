@@ -8,14 +8,17 @@ import findResults from './findResults'
 // e::object -- synthetic event that contains key press data
 // ui::object -- existing ui store
 // updateUI::function -- updates ui store
-const handleKeyInput = ({ e, ui, updateUI, asyncLoadProject }) => {
+const handleKeyInput = ({ e, ui, updateUI, asyncLoadProject, push }) => {
 	// if shift key is active, assume the user does not want to use this component
 	if (e.shiftKey) {
 		return
 	}
 	const controlDictionary = {
 		// press enter/return
-		[13]: () => asyncLoadProject(ui.valueToSearch)
+		[13]: () => {
+			push('/editor')
+			asyncLoadProject(ui.valueToSearch)
+		}
 	}
 	const lookupControll = controlDictionary[e.keyCode]
 	if (typeof lookupControll === 'function') {

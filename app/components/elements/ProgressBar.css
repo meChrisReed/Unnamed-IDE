@@ -1,0 +1,12 @@
+.progressBar {
+	background: var(--dark-background);
+	height: var(--line-height);
+	width: 100%;
+	display: inline-block;
+}
+
+.progressIndicator {
+	background: var(--bright-color);
+	height: 100%;
+	display: inline-block;
+}

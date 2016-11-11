@@ -6,6 +6,7 @@ import React, { Component } from 'react'
 import ui from 'redux-ui'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { push } from 'react-router-redux'
 
 // project components
 import Card from '../stylize/Card.jsx'
@@ -39,10 +40,11 @@ const FileSearch = ({
 	ui,
 	updateUI,
 	userInstruction,
-	asyncLoadProject
+	asyncLoadProject,
+	push
 }) => <Card
 	className={styles.Card}
-	onKeyDown={e => handleKeyInput({ e, ui, updateUI, asyncLoadProject })}
+	onKeyDown={e => handleKeyInput({ e, ui, updateUI, asyncLoadProject, push })}
 >
 	<TextInput
 		placeholder={userInstruction}
@@ -81,6 +83,7 @@ const FileSearchUi = ui({
 export default connect(
 	state => ({}),
 	dispatch => bindActionCreators({
-		asyncLoadProject
+		asyncLoadProject,
+		push
 	}, dispatch)
 )(FileSearchUi)

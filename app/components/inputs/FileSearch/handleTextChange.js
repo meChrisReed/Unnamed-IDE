@@ -20,14 +20,29 @@ const handleTextChange = (e, ui, updateUI) => {
 	// the results with the new valueToSearch.
 	const finalResults = findResults(valueToSearch, ui.results)
 
-	updateUI({
-		valueToSearch: tryResults(valueToSearch) ? valueToSearch : e.currentTarget.value,
-		results: finalResults,
-		selectedResultIndex: {
-			[true]: ui.selectedResultIndex,
-			[ui.selectedResultIndex >= finalResults.length -1]: finalResults.length -1
-		}[true]
-	})
+// HACK FOR WHAT EVER REASON THIS STOPPED TRANSPILING
+// ORIGINAL:
+// updateUI({
+// 	valueToSearch: tryResults(valueToSearch) ? valueToSearch : e.currentTarget.value,
+// 	results: finalResults,
+// 	selectedResultIndex: {
+// 		[true]: ui.selectedResultIndex,
+// 		[ui.selectedResultIndex >= finalResults.length -1]: finalResults.length -1
+// 	}[true]
+// })
+	if (ui.selectedResultIndex >= finalResults.length -1) {
+		updateUI({
+			valueToSearch: tryResults(valueToSearch) ? valueToSearch : e.currentTarget.value,
+			results: finalResults,
+			selectedResultIndex: finalResults.length -1
+		})
+	} else {
+		updateUI({
+			valueToSearch: tryResults(valueToSearch) ? valueToSearch : e.currentTarget.value,
+			results: finalResults,
+			selectedResultIndex: ui.selectedResultIndex
+		})
+	}
 }
 
 export default handleTextChange

@@ -1,0 +1,12 @@
+.ColorBlock{
+	height: 40px;
+	width: 40px;
+	position: relative;
+	float: left;
+	transition: transform 0.3s;
+}
+.ColorBlock:hover {
+	transform: scale(1.2);
+	z-index: 2;
+	transition: transform 0.1s;
+}

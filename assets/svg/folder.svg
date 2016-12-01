@@ -1,1 +1,8 @@
-<svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1728 608v704q0 92-66 158t-158 66h-1216q-92 0-158-66t-66-158v-960q0-92 66-158t158-66h320q92 0 158 66t66 158v32h672q92 0 158 66t66 158z"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="16px" viewBox="0 0 20 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<g id="Icons" transform="translate(-75.000000, -43.000000)">
+		<g id="ic_folder-with-hover" transform="translate(68.000000, 34.000000)">
+			<path d="M15,9 L9,9 C7.9,9 7.01,9.9 7.01,11 L7,23 C7,24.1 7.9,25 9,25 L25,25 C26.1,25 27,24.1 27,23 L27,13 C27,11.9 26.1,11 25,11 L17,11 L15,9 L15,9 Z" id="Shape"></path>
+		</g>
+	</g>
+</svg>

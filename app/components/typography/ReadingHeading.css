@@ -1,0 +1,7 @@
+.ReadingHeading {
+	/* weight variant stretch height/line name */
+	display: block;
+	font: normal normal normal 24px/34px Arial;
+	color: var(--interactive);
+	margin: var(--margin);
+}

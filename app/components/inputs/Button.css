@@ -1,16 +1,20 @@
+.position {
+	display: inline-block;
+	margin: 7px;
+}
 .Button {
-  border: none;
-  background: var(--raised-background);
-  color: var(--basic-text-color);
-  /* TODO Iether install with package or include import */
-  font-family: 'Fira Code';
-  padding: 0 13px;
-  transition: background 0.3s;
-	border-radius: 3px;
+	-webkit-user-select: none;
+	padding: 7px;
 	cursor: pointer;
-	outline: none;
-	line-height: var(--line-height);
+	display: inline-block;
+	box-sizing: border-box;
+	transition: background var(--transition-in);
+	border-radius: var(--border-radius);
 }
 .Button:hover, .Button:focus {
-  background: var(--raised-higher-background);
+	background: var(--interactive-accent);
+	transition: background var(--transition-out);
+}
+.Button:active {
+	background: var(--background);
 }

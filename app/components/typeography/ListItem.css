@@ -1,6 +1,0 @@
-.ListItem {
-	line-height: var(--line-height);
-	color: var(--basic-text-color);
-	list-style: none;
-	padding-left: 48px;
-}

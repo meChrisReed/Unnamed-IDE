@@ -5,20 +5,31 @@ import infoAddon from '@kadira/react-storybook-addon-info'
 
 import globalCss from '../app/app.global.css'
 
-import buttonStories from './inputs/buttonStories.jsx'
+// import buttonStories from './inputs/buttonStories.jsx'
 import shadowStories from './stylize/shadowStories.jsx'
 import cardStories from './stylize/cardStories.jsx'
-import iconStories from './icons/iconStories.jsx'
-import progressBarStories from './elements/progressBarStories.jsx'
+import colorStories from './colorStories.jsx'
+import typographyStories from './typographyStories.jsx'
+import iconStories from './iconStories.jsx'
+// import textInputStories from './inputs/textInputStories.jsx'
+import InputStories from './InputStories.jsx'
 
 setAddon(infoAddon)
 
-buttonStories({
-  storiesOf: storiesOf(
-    'Button', module
-  ).addDecorator(
-    centered
-  )
+colorStories({
+	storiesOf: storiesOf(
+		'Colors', module
+	).addDecorator(
+		centered
+	)
+})
+
+typographyStories({
+	storiesOf: storiesOf(
+		'Typography', module
+	).addDecorator(
+		centered
+	)
 })
 
 shadowStories({
@@ -29,25 +40,41 @@ shadowStories({
   )
 })
 
+iconStories({
+	storiesOf: storiesOf(
+		'Icons', module
+	).addDecorator(
+		centered
+	)
+})
+
+InputStories({
+  storiesOf: storiesOf(
+    'Inputs', module
+  ).addDecorator(
+    centered
+  )
+})
+
+// buttonStories({
+//   storiesOf: storiesOf(
+//     'Button', module
+//   ).addDecorator(
+//     centered
+//   )
+// })
+//
+// textInputStories({
+//   storiesOf: storiesOf(
+//     'Text Input', module
+//   ).addDecorator(
+//     centered
+//   )
+// })
+
 cardStories({
   storiesOf: storiesOf(
     'Card', module
-  ).addDecorator(
-    centered
-  )
-})
-
-iconStories({
-  storiesOf: storiesOf(
-    'Icon', module
-  ).addDecorator(
-    centered
-  )
-})
-
-progressBarStories({
-  storiesOf: storiesOf(
-    'Progress Bar', module
   ).addDecorator(
     centered
   )

@@ -1,0 +1,17 @@
+.TextShadow {
+	box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+	float: left;
+	border-radius: 3px;
+	transition: text-shadow 0.3s;
+	cursor: pointer;
+}
+.force {
+	text-shadow: 0 1px 4px hsla(0, 0%, 0%, 0.4), 0 6px 6px hsla(0, 0%, 0%, 0.7);
+}
+
+.TextShadow:hover {
+	text-shadow: 0 1px 4px hsla(0, 0%, 0%, 0.4), 0 6px 6px hsla(0, 0%, 0%, 0.7);
+	transition: text-shadow 0.2s;
+}

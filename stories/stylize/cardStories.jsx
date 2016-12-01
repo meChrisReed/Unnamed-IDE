@@ -1,34 +1,24 @@
 import React from 'react'
 
 import Card from '../../app/components/stylize/Card.jsx'
+import ReadingHeading from '../../app/components/typography/ReadingHeading.jsx'
+import ReadingBody from '../../app/components/typography/ReadingBody.jsx';
 import Button from '../../app/components/inputs/Button.jsx'
-import ProgressBar from '../../app/components/elements/ProgressBar.jsx'
-import List from '../../app/components/typeography/List.jsx'
-import ListItem from '../../app/components/typeography/ListItem.jsx'
+import Divider from '../../app/components/elements/Divider.jsx'
 
 const cardStories = ({
   storiesOf,
   action,
   linkTo
 }) => storiesOf.addWithInfo(
-  'with text',
+  'Composition',
   () => (
-    <Card> Hello Card! </Card>
-  )
-).addWithInfo(
-  'with a button',
-  () => (
-    <Card><Button> Hello Card Button! </Button></Card>
-  )
-).addWithInfo(
-  'with progress',
-  () => (
-    <Card style={{ width: '500px' }}>
-			<ProgressBar persentComplete={20}/>
-				<List>
-						<ListItem> Finding Files </ListItem>
-						<ListItem> Parsing Initial View </ListItem>
-				</List>
+    <Card>
+			<ReadingHeading> Hello Card! </ReadingHeading>
+			<ReadingBody> This is the body of this card! </ReadingBody>
+			<Divider/>
+			<Button> ACTION </Button>
+			<Button> OTHER ACTION </Button>
 		</Card>
   )
 )

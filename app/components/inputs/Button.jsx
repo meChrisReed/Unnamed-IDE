@@ -1,11 +1,18 @@
 import React from 'react'
 
 import Shadow from '../stylize/Shadow.jsx'
+import ButtonText from 'app/components/typography/ButtonText'
 
 import styles from './Button.css'
 
-const Button = ({ children, ...props }) => <Shadow>
-  <button {...props} className={styles.Button}>{ children }</button>
-</Shadow>
+const Button = ({ children }) =>
+<span className={ styles.position }>
+	<Shadow depth='mid'>
+		<span className={ styles.Button }>
+				<ButtonText>{ children }</ButtonText>
+		</span>
+	</Shadow>
+</span>
+
 
 export default Button

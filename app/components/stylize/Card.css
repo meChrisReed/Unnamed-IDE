@@ -1,5 +1,7 @@
 .Card {
-  background: var(--card-background-color);
+	display: inline-block;
+  background: var(--background);
+	border-radius: 3px;
 }
 
 /*

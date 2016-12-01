@@ -3,15 +3,11 @@ import React from 'react'
 import styles from './Card.css'
 import Shadow from './Shadow.jsx'
 
-const Card = ({ children, className, ...props }) => <Shadow
-	force={true}
+const Card = ({ children }) => <Shadow
+	force depth='low'
 >
   <div
-		{ ...props }
-		className={[
-			styles.Card,
-			className
-		].join(' ')}
+		className={ styles.Card }
 	>{ children }</div>
 </Shadow>
 

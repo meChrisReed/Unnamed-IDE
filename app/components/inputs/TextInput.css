@@ -1,18 +1,13 @@
-.TextInput {
-	background: var(--dark-background);
-}
+
 .input {
 	background: transparent;
-	color: var(--basic-text-color);
+	font: normal normal normal 16px/21px Fira Code;
+	color: var(--bright);
 	line-height: var(--line-height);
-	padding: 0;
+	padding: 0 0 1px 0;
 	border: 0;
+	border-bottom: 1px solid var(--interactive);
 	outline: none;
-	width: calc(100% - 48px);
-}
-.Icon {
-	display: inline-block;
-	margin: 0 12px;
-	top: 6px;
-	position: relative;
+	width: 100%;
+	-webkit-caret-color: var(--interactive);
 }

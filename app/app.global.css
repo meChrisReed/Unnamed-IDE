@@ -1,40 +1,58 @@
 :root {
-  --background-color: #546E7A;
-  --border-color: #00BFA5;
-  --basic-text-color: #F5F5F5;
-	--raised-background: #455A64;
-  --raised-higher-background: #415660;
-  --card-background-color: #455A64;
-  --bright-color: #64FFDA;
-	--dark-background: #37474F;
-	--line-height: 48px;
+	/* Primary Colors */
+	--background: hsl(0, 0%, 27%);
+	--interactive: hsl(174, 42%, 65%);
+	--interactive-accent: hsla(0, 0%, 0%, 0.3);
+	--bright: hsl(0, 0%, 100%);
+
+	/* Quality Colors */
+	--quality-sev-one:   hsl(207, 96%, 86%);
+	--quality-sev-two:   hsl(207, 89%, 79%);
+	--quality-sev-three: hsl(207, 82%, 72%);
+	--quality-sev-four:  hsl(207, 75%, 65%);
+	--quality-sev-five:  hsl(207, 68%, 58%);
+	--quality-sev-six:   hsl(207, 61%, 51%);
+	--quality-sev-seven: hsl(207, 54%, 44%);
+	--quality-sev-eight: hsl(207, 47%, 37%);
+	--quality-sev-nine:  hsl(207, 40%, 30%);
+	--quality-sev-ten:   hsl(207, 33%, 23%);
+
+	/* Hover Transitions */
+	--transition-in: 0.2s;
+	--transition-out: 0.3s;
+
+	/* Box Positioning */
+	--margin: 7px;
+
+	/* Stylize */
+	--border-radius: 3px;
 }
-body {
-  background: var(--background-color);
-}
-::-webkit-scrollbar {
-	width: 1px;
-	background: transparent;
-}
-::-webkit-scrollbar-button {
-	height: 0;
-	background: transparent;
-}
-::-webkit-scrollbar-track {
-	background: transparent;
-}
-::-webkit-scrollbar-track-piece {
-	height: 0;
-	background: transparent;
-}
-::-webkit-scrollbar-thumb {
-	background: var(--bright-color);
-}
-::-webkit-scrollbar-corner {
-	height: 0;
-	background: transparent;
-}
-::-webkit-resizer {
-	height: 0;
-	background: transparent;
-}
+
+/* scrollbar */
+	::-webkit-scrollbar {
+		width: 1px;
+		background: transparent;
+	}
+	::-webkit-scrollbar-button {
+		height: 0;
+		background: transparent;
+	}
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	::-webkit-scrollbar-track-piece {
+		height: 0;
+		background: transparent;
+	}
+	::-webkit-scrollbar-thumb {
+		background: var(--interactive);
+	}
+	::-webkit-scrollbar-corner {
+		height: 0;
+		background: transparent;
+	}
+	::-webkit-resizer {
+		height: 0;
+		background: transparent;
+	}
+/* /scrollbar */

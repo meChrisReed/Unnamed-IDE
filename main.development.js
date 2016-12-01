@@ -35,9 +35,9 @@ app.on('ready', async () => {
   await installExtensions();
 
   mainWindow = new BrowserWindow({
-    show: false,
     width: 1024,
-    height: 728
+    height: 728,
+		vibrancy: 'dark'
   });
 
   mainWindow.loadURL(`file://${__dirname}/app/app.html`);

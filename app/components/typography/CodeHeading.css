@@ -1,0 +1,5 @@
+.CodeHeading {
+	/* weight variant stretch height/line name */
+	font: normal normal normal 24px/34px Fira Code;
+	color: var(--bright);
+}

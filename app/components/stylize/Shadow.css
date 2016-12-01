@@ -2,10 +2,8 @@
   box-sizing: border-box;
   display: inline-block;
   position: relative;
-	float: left;
+	/*float: left;*/
 	border-radius: 3px;
-	margin: 13px;
-	box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.4), 0px 1px 2px 0px rgba(0,0,0,0.4);
 }
 .Shadow:before {
   content: "";
@@ -14,14 +12,33 @@
   display: block;
   position: absolute;
 	border-radius: 3px;
-  box-shadow: 0px 1px 9px 0px rgba(0,0,0,0.15), 0px 6px 14px -1px rgba(0,0,0,0.2);
   opacity: 0.01;
-  transition: opacity 0.25s;
+  transition: opacity 0.2s;
+}
+.Shadow:hover {
+	z-index: 10;
 }
 .Shadow:hover:before, .Shadow:focus:before, .force:before {
   opacity: 1;
+	transition: opacity 0.3s;
 }
 
 .ChildContext {
   opacity: 0.99;
+}
+
+.high:before {
+	box-shadow: 0 7px 14px 0 hsla(0, 0%, 0%, 0.4),
+		0 14px 15px 1px hsla(0, 0%, 0%, 0.32),
+		0 17px 42px 2px hsla(0, 0%, 0%, 0.38);
+}
+
+.mid:before {
+	box-shadow: 0 0 4px 2px hsla(0, 0%, 0%, 0.20),
+		0 4px 4px 2px hsla(0, 0%, 0%, 0.34);
+}
+
+.low:before {
+	box-shadow: 0 0 2px 0 hsla(0, 0%, 0%, 0.12),
+		0 2px 2px 0 hsla(0, 0%, 0%, 0.24);
 }

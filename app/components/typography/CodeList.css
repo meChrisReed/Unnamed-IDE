@@ -1,0 +1,5 @@
+.CodeList {
+	/* weight variant stretch height/line name */
+	font: normal normal normal 16px/34px Arial;
+	color: var(--bright);
+}

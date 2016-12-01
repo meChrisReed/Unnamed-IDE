@@ -1,0 +1,7 @@
+.ReadingBody {
+	/* weight variant stretch height/line name */
+	display: block;
+	font: normal normal normal 16px/21px Arial;
+	color: var(--bright);
+	margin: var(--margin);
+}

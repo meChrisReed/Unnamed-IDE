@@ -1,4 +1,5 @@
 import { app, BrowserWindow, Menu, shell } from 'electron';
+import path from 'path';
 
 let menu;
 let template;
@@ -20,12 +21,13 @@ app.on('ready', async () => {
   mainWindow = new BrowserWindow({
     width: 1024,
     height: 728,
-		vibrancy: 'dark'
+		vibrancy: 'dark',
   });
-
+mainWindow.webContents.executeJavaScript('var fs = require("fs"); console.log("a")')
   mainWindow.loadURL('http://localhost:6006');
+	mainWindow.webContents.executeJavaScript('var fs = require("fs"); console.log("b")')
 
-  mainWindow.webContents.on('did-finish-load', () => {
+  mainWindow.webContents.on('did-stop-loading', () => {
     mainWindow.show();
     mainWindow.focus();
     mainWindow.webContents.executeJavaScript(`
@@ -39,7 +41,7 @@ app.on('ready', async () => {
 				'b {color: #000;}' +
 				'.Pane.vertical.Pane1 > div > div > div {background: transparent !important;}';
 			body.appendChild(style);
-			console.log(body, body, style)
+			var fs = require('fs')
 			`);
   });
 

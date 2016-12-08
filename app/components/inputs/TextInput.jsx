@@ -3,9 +3,9 @@ import React from 'react'
 import styles from './TextInput.css'
 import Icon from '../elements/Icon'
 
-const TextInput = ({ placeholder }) =>
+const TextInput = props =>
 <input
-	placeholder={placeholder}
+	{...props}
 	className={styles.input}
 	type='text'
 />

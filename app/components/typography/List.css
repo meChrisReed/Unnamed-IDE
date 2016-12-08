@@ -1,0 +1,6 @@
+.List {
+	max-height: 70vh;
+	overflow: scroll;
+	margin: 0;
+	padding: 0;
+}

@@ -4,7 +4,7 @@ export default {
       name: 'Identifier'
     }
   ],
-  fileSearch: [
+  PathSearch: [
     name: 'Identifier'
   ],
   files: {

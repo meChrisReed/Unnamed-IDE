@@ -1,7 +1,8 @@
 .Card {
-	display: inline-block;
+	display: block;
   background: var(--background);
 	border-radius: 3px;
+	max-width: 500px;
 }
 
 /*

@@ -1,8 +1,7 @@
 .App {
   height: 100%;
   width: 100%;
-  padding: 0.5rem;
+  padding: var(--padding);
   position: fixed;
   margin: 0;
-  background: var(--background-color)
 }

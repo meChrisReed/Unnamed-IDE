@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Shadow from '../../app/components/stylize/Shadow.jsx'
-import TextShadow from '../../app/components/stylize/TextShadow.jsx'
-import ReadingList from '../../app/components/typography/ReadingList.jsx';
+import Shadow from '../app/components/stylize/Shadow.jsx'
+import TextShadow from '../app/components/stylize/TextShadow.jsx'
+import ReadingList from '../app/components/typography/ReadingList.jsx';
 
 const StoryUtilMargin = ({ children }) => <div
 	style={{
@@ -12,7 +12,7 @@ const StoryUtilMargin = ({ children }) => <div
 	{ children }
 </div>
 
-const buttonStories = ({
+const shadowStories = ({
   storiesOf,
   action,
   linkTo
@@ -94,4 +94,4 @@ const buttonStories = ({
   )
 )
 
-export default buttonStories
+export default shadowStories

@@ -1,10 +1,10 @@
 import React from 'react'
 
-import Card from '../../app/components/stylize/Card.jsx'
-import ReadingHeading from '../../app/components/typography/ReadingHeading.jsx'
-import ReadingBody from '../../app/components/typography/ReadingBody.jsx';
-import Button from '../../app/components/inputs/Button.jsx'
-import Divider from '../../app/components/elements/Divider.jsx'
+import Card from '../app/components/stylize/Card.jsx'
+import ReadingHeading from '../app/components/typography/ReadingHeading.jsx'
+import ReadingBody from '../app/components/typography/ReadingBody.jsx';
+import Button from '../app/components/inputs/Button.jsx'
+import Divider from '../app/components/elements/Divider.jsx'
 
 const cardStories = ({
   storiesOf,

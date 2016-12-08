@@ -5,14 +5,13 @@ import infoAddon from '@kadira/react-storybook-addon-info'
 
 import globalCss from '../app/app.global.css'
 
-// import buttonStories from './inputs/buttonStories.jsx'
-import shadowStories from './stylize/shadowStories.jsx'
-import cardStories from './stylize/cardStories.jsx'
+import shadowStories from './shadowStories.jsx'
+import cardStories from './cardStories.jsx'
 import colorStories from './colorStories.jsx'
 import typographyStories from './typographyStories.jsx'
 import iconStories from './iconStories.jsx'
-// import textInputStories from './inputs/textInputStories.jsx'
-import InputStories from './InputStories.jsx'
+import inputStories from './inputStories.jsx'
+import pathSearchStories from './pathSearchStories.jsx'
 
 setAddon(infoAddon)
 
@@ -48,7 +47,7 @@ iconStories({
 	)
 })
 
-InputStories({
+inputStories({
   storiesOf: storiesOf(
     'Inputs', module
   ).addDecorator(
@@ -56,25 +55,17 @@ InputStories({
   )
 })
 
-// buttonStories({
-//   storiesOf: storiesOf(
-//     'Button', module
-//   ).addDecorator(
-//     centered
-//   )
-// })
-//
-// textInputStories({
-//   storiesOf: storiesOf(
-//     'Text Input', module
-//   ).addDecorator(
-//     centered
-//   )
-// })
-
 cardStories({
   storiesOf: storiesOf(
     'Card', module
+  ).addDecorator(
+    centered
+  )
+})
+
+pathSearchStories({
+  storiesOf: storiesOf(
+    'Path Search', module
   ).addDecorator(
     centered
   )

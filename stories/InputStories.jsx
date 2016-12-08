@@ -3,7 +3,7 @@ import React from 'react'
 import Button from '../app/components/inputs/Button.jsx'
 import TextInput from '../app/components/inputs/TextInput.jsx'
 
-const iconStories = ({
+const inputStories = ({
   storiesOf,
   action,
   linkTo
@@ -21,4 +21,4 @@ const iconStories = ({
 
 
 
-export default iconStories
+export default inputStories

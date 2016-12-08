@@ -1,45 +1,43 @@
 import React from 'react'
+import { bindActionCreators } from 'redux'
+import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
-import ui from 'redux-ui'
 
-import Button from '../../components/inputs/Button'
-import FileSearch from '../../components/inputs/FileSearch'
+/* ui example
+	import ui from 'redux-ui'
+	...
+	const CleanOpenUi = ui({
+		key: 'CleanOpen',
+		state: {
+			loadingProject: false,
+			creatingNewProject: false
+		}
+	})(CleanOpen)
 
-const CleanOpen = ({ ui, updateUI }) => <div>
-  {
-		ui.loadingProject ? <FileSearch userInstruction='Path to existing project location' /> :
-		<Button
-			onClick={
-				() => updateUI({
-					loadingProject: true,
-					creatingNewProject: false
-				})
-			}
-		> Load Project </Button>
-	}
+	export default connect(
+	  () => ({}),
+	  () => ({})
+	)(CleanOpenUi)
+*/
 
-	{
-		ui.creatingNewProject ? <FileSearch userInstruction='Path create a new project at' /> :
-		<Button
-			onClick={
-				() => updateUI({
-					loadingProject: false,
-					creatingNewProject: true
-				})
-			}
-		> New Project </Button>
-	}
+import Card from 'app/components/stylize/Card.jsx'
+import ReadingHeading from 'app/components/typography/ReadingHeading.jsx'
+import ReadingBody from 'app/components/typography/ReadingBody.jsx';
+import Button from 'app/components/inputs/Button.jsx'
+import Divider from 'app/components/elements/Divider.jsx'
+/* import PathSearch from '../../components/inputs/PathSearch' */
+
+const CleanOpen = ({ ui, updateUI, push }) => <div>
+	<Card>
+		<ReadingHeading> Lets Get Started! </ReadingHeading>
+		<ReadingBody> Load an existing project or create a new one </ReadingBody>
+		<Divider/>
+		<Button onClick={ e => push('/load-project') }> LOAD </Button>
+		<Button onClick={ e => push('/new-project') }> NEW </Button>
+	</Card>
 </div>
-
-const CleanOpenUi = ui({
-	key: 'CleanOpen',
-	state: {
-		loadingProject: false,
-		creatingNewProject: false
-	}
-})(CleanOpen)
 
 export default connect(
   () => ({}),
-  () => ({})
-)(CleanOpenUi)
+	dispatch => bindActionCreators({ push }, dispatch)
+)(CleanOpen)

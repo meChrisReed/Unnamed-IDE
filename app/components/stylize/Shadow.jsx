@@ -5,16 +5,16 @@ import styles from './Shadow.css'
 const Shadow = ({
   children, // DOM: children to render sarounded by shadow
   force, // bool: force the shadow on
-	depth = 'low'
+	depth = 'low',
+	off
 }) => (
   <div
     className={[
       styles.Shadow,
-			styles[depth],
+			!off ? styles[depth] : '',
       force ? styles.force : ''
     ].join(' ')}
   >
-	{console.log('sup?', typeof children)}
     <div className={ styles.ChildContext }>{ children }</div>
   </div>
 )
@@ -26,7 +26,8 @@ Shadow.propTypes = {
 		'high',
 		'mid',
 		'low'
-	])
+	]),
+	off: React.PropTypes.bool
 }
 
 export default Shadow

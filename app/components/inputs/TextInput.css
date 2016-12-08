@@ -10,4 +10,6 @@
 	outline: none;
 	width: 100%;
 	-webkit-caret-color: var(--interactive);
+	margin: var(--margin);
+	width: calc(100% - 14px)
 }

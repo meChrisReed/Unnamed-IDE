@@ -1,0 +1,7 @@
+.ListItem {
+	list-style: none;
+	padding-left: var(--margin);
+}
+.selected {
+	background: var(--interactive-accent)
+}

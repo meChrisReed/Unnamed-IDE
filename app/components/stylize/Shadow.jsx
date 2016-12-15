@@ -6,13 +6,15 @@ const Shadow = ({
   children, // DOM: children to render sarounded by shadow
   force, // bool: force the shadow on
 	depth = 'low',
-	off
+	off,
+	fillWidth
 }) => (
   <div
     className={[
       styles.Shadow,
 			!off ? styles[depth] : '',
-      force ? styles.force : ''
+      force ? styles.force : '',
+			fillWidth ? styles.fillWidth : ''
     ].join(' ')}
   >
     <div className={ styles.ChildContext }>{ children }</div>

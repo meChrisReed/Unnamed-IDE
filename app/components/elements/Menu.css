@@ -1,0 +1,17 @@
+.Menu {
+	display: inline-block;
+	width: 34px;
+	padding-top: var(--padding);
+	padding-left: var(--padding);
+	overflow: hidden;
+	position: fixed;
+	transition: width var(--transition-in);
+}
+.Menu:hover {
+	width: 174px;
+	transition: width var(--transition-out);
+}
+
+.children {
+	width: 174px;
+}

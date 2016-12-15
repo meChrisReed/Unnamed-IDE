@@ -29,7 +29,7 @@ mainWindow.webContents.executeJavaScript('var fs = require("fs"); console.log("a
 
   mainWindow.webContents.on('did-stop-loading', () => {
     mainWindow.show();
-    mainWindow.focus();
+    // mainWindow.focus();
     mainWindow.webContents.executeJavaScript(`
 			var body = document.getElementsByTagName('body')[0];
 			var style = document.createElement('style');

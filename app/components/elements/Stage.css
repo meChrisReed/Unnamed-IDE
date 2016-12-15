@@ -1,0 +1,26 @@
+.Stage {
+	/*
+	width 100%
+	- padding left
+	- padding right
+	- left icons
+	- right icons
+	*/
+	width: 100%;
+
+	background: var(--background);
+	border-radius: var(--border-radius);
+	transition-property: transform;
+	transition-duration: var(--transition-in)
+}
+
+.leftMenuSpae {
+	transition-property: transform;
+	transition-duration: var(--transition-in);
+}
+.wrap {
+	width: 100%;
+	margin-bottom: calc(34px + var(--margin));
+	transition-property: transform;
+	transition-duration: var(--transition-in)
+}

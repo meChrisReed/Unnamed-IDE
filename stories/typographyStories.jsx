@@ -19,6 +19,7 @@ const typographyStories = ({
   linkTo
 }) => storiesOf.addWithInfo(
   'All Typography',
+	'path: app/components/typography/*',
   () => <div>
 		<ReadingHeading> Reading Heading: 24/34, Arial, interactive color </ReadingHeading>
 		<Divider/>
@@ -39,6 +40,33 @@ const typographyStories = ({
 		<Placeholder> Placeholder: 16/21, Fira Code,interactive accent color </Placeholder>
 		<Divider/>
   </div>
+).addWithInfo(
+  'ReadingHeading',
+  () => <ReadingHeading> Reading Heading: 24/34, Arial, interactive color || path: app/components/typography/ReadingHeading </ReadingHeading>
+).addWithInfo(
+  'ReadingList',
+  () => <ReadingList> Reading List: 16/34, Arial, bright color || path: app/components/typography/ReadingList </ReadingList>
+).addWithInfo(
+  'ReadingBody',
+  () => <ReadingBody> Reading Body: 16/21, Arial, bright color || path: app/components/typography/ReadingBody </ReadingBody>
+).addWithInfo(
+  'ButtonText',
+  () => <ButtonText> Button Text: 16/21, Arial, interactive color — ALL CAPS || path: app/components/typography/ButtonText </ButtonText>
+).addWithInfo(
+  'ButtonDissabledText',
+  () => <ButtonDissabledText> Button Dissabled Text: 16/21, Fira Code, interactive actcent color — ALL CAPS || path: app/components/typography/ButtonDissabledText </ButtonDissabledText>
+).addWithInfo(
+  'CodeHeading',
+  () => <CodeHeading> Code Heading: 24/34, Fira Code, bright color || path: app/components/typography/CodeHeading </CodeHeading>
+).addWithInfo(
+  'CodeList',
+  () => <CodeList> Code List: 16/34, Fira Code, bright color || path: app/components/typography/CodeList </CodeList>
+).addWithInfo(
+  'CodeBody',
+  () => <CodeBody> Code Body: 16/21, Fira Code,bright color || path: app/components/typography/CodeBody </CodeBody>
+).addWithInfo(
+  'Placeholder',
+  () => <Placeholder> Placeholder: 16/21, Fira Code,interactive accent color || path: app/components/typography/Placeholder </Placeholder>
 )
 
 export default typographyStories

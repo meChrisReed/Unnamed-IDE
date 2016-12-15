@@ -13,18 +13,19 @@
   position: absolute;
 	border-radius: 3px;
   opacity: 0.01;
-  transition: opacity 0.2s;
+  transition: opacity var(--transition-in);
 }
 .Shadow:hover {
 	z-index: 10;
 }
 .Shadow:hover:before, .Shadow:focus:before, .force:before {
   opacity: 1;
-	transition: opacity 0.3s;
+	transition: opacity var(--transition-out);
 }
 
 .ChildContext {
   opacity: 0.99;
+	display: flex;
 }
 
 .high:before {
@@ -41,4 +42,7 @@
 .low:before {
 	box-shadow: 0 0 2px 0 hsla(0, 0%, 0%, 0.12),
 		0 2px 2px 0 hsla(0, 0%, 0%, 0.24);
+}
+.fillWidth {
+	width: 100%;
 }

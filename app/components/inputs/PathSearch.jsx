@@ -18,7 +18,7 @@ import searchPath from 'app/actions/searchPath'
 
 import styles from './PathSearch.css'
 
-const handleKeyInput = ({ e, updateUI, selectedResultIndex, results, currentPath, searchPath }) => {
+const handleKeyInput = ({ e, updateUI, selectedResultIndex, results, currentPath, searchPath, push }) => {
 	// if shift key is active, assume the user does not want to use this component
 	if (e.shiftKey) {
 		return
@@ -31,11 +31,8 @@ const handleKeyInput = ({ e, updateUI, selectedResultIndex, results, currentPath
 	const controlDictionary = {
 		// default keyCode function
 		[e.keyCode]: i => i,
-		// press enter/return
-		[13]: () => {
-			// push('/editor')
-			// asyncLoadProject(currentPath)
-		},
+		// press delete
+		[8] : () => searchPath(currentPath),
 		// press tab
 		[9]: () => {
 			e.preventDefault()
@@ -45,6 +42,11 @@ const handleKeyInput = ({ e, updateUI, selectedResultIndex, results, currentPath
 				currentPath: updatedPath,
 				selectedResultIndex: 0
 			})
+		},
+		// press enter/return
+		[13]: () => {
+			push('/editor')
+			// asyncLoadProject(currentPath)
 		},
 		// press up
 		[38]: () => {
@@ -73,7 +75,8 @@ const PathSearch = ({
 	results = [],
 
 	updateUI,
-	searchPath
+	searchPath,
+	push
 }) => {
 	const {
 		currentPath = '',
@@ -81,7 +84,7 @@ const PathSearch = ({
 	} = ui
 
 	return <div
-		onKeyDown={ e => handleKeyInput({ e, updateUI, selectedResultIndex, results, currentPath, searchPath }) }
+		onKeyDown={ e => handleKeyInput({ e, updateUI, selectedResultIndex, results, currentPath, searchPath, push }) }
 	>
 		<TextInput
 			placeholder=''

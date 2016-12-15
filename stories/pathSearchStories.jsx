@@ -6,7 +6,7 @@ import PathSearch from '../app/components/inputs/PathSearch.jsx'
 import Button from '../app/components/inputs/Button.jsx'
 import Divider from '../app/components/elements/Divider.jsx'
 
-const cardStories = ({
+const pathSearchStories = ({
   storiesOf,
   action,
   linkTo
@@ -14,7 +14,13 @@ const cardStories = ({
 storiesOf.addWithInfo(
   'Default',
   () => (
-		<PathSearch/>
+		<PathSearch store={{
+				getState: () => ({
+					ui: {
+						getIn: i => i
+					}
+				})
+			}}/>
   )
 ).addWithInfo(
   'Results',
@@ -96,4 +102,4 @@ storiesOf.addWithInfo(
   )
 )
 
-export default cardStories
+export default pathSearchStories

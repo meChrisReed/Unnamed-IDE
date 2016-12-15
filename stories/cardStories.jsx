@@ -12,6 +12,7 @@ const cardStories = ({
   linkTo
 }) => storiesOf.addWithInfo(
   'Composition',
+	'path: app/components/stylize/Card',
   () => (
     <Card>
 			<ReadingHeading> Hello Card! </ReadingHeading>

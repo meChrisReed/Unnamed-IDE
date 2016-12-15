@@ -9,11 +9,13 @@ const inputStories = ({
   linkTo
 }) => storiesOf.addWithInfo(
   'Button',
+	'path: app/components/inputs/Button.jsx',
   () => <div>
 		<Button> Hello Button! </Button>
   </div>
 ).addWithInfo(
   'Text Input',
+	'path: app/components/inputs/TextInput.jsx',
   () => (
     <TextInput placeholder='sample text input'/>
   )

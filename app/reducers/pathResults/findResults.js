@@ -14,17 +14,25 @@ import tryResults from './tryResults'
 const findResults = (
 	value,
 	previousResults
-) => tryResults( // handle io errors
-	value,
-	previousResults
-).filter( // remove all private files (files that start with '.')
-	fileName => !fileName.match(/^\./)
-).filter( // filter the strings that contain all of the characters in value
-	fileName => !!value.match(/\/$/) ||// if fileName ends in / return true
-		// convert singular fileName string to plural
-		fileName.split('').filter( // each letter should be included in value's base
-			letter => path.parse(value).base.split('').includes(letter)
-		).length >= path.parse(value).base.length
-)
+) => {
+	const base = path.parse(value).base
+	return tryResults( // handle io errors
+		value,
+		previousResults
+	).filter( // remove all private files (files that start with '.')
+		fileName => !fileName.match(/^\./)
+	).filter( // filter the strings that contain all of the characters in value
+		// if fileName ends in / return true
+		fileName => !!value.match(/\/$/) || !!fileName.match(base)
+	)
+}
 
 export default findResults
+
+// .filter( // filter the strings that contain all of the characters in value
+// 	fileName => !!value.match(/\/$/) ||// if fileName ends in / return true
+// 		// convert singular fileName string to plural
+// 		fileName.split('').filter( // each letter should be included in value's base
+// 			letter => path.parse(value).base.split('').includes(letter)
+// 		).length >= path.parse(value).base.length
+// )

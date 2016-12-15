@@ -11,7 +11,9 @@ import colorStories from './colorStories.jsx'
 import typographyStories from './typographyStories.jsx'
 import iconStories from './iconStories.jsx'
 import inputStories from './inputStories.jsx'
-import pathSearchStories from './pathSearchStories.jsx'
+// import pathSearchStories from './pathSearchStories.jsx'
+import stageStories from './stageStories'
+import menuItemStories from './menuItemStories'
 
 setAddon(infoAddon)
 
@@ -63,10 +65,26 @@ cardStories({
   )
 })
 
-pathSearchStories({
-  storiesOf: storiesOf(
-    'Path Search', module
-  ).addDecorator(
-    centered
-  )
+// pathSearchStories({
+//   storiesOf: storiesOf(
+//     'Path Search', module
+//   ).addDecorator(
+//     centered
+//   )
+// })
+
+stageStories({
+	storiesOf: storiesOf(
+		'Stage', module
+	).addDecorator(
+		centered
+	)
+})
+
+menuItemStories({
+	storiesOf: storiesOf(
+		'Menu Item', module
+	).addDecorator(
+		centered
+	)
 })

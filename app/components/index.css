@@ -1,7 +1,8 @@
 .App {
-  height: 100%;
-  width: 100%;
-  padding: var(--padding);
+  height: calc(100vh + 14px);
+  width: 100vw;
   position: fixed;
   margin: 0;
+	overflow: scroll;
+	box-sizing: border-box;
 }

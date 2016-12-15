@@ -1,0 +1,11 @@
+.QualityMenuItem {
+	float: right;
+	clear: both;
+	/*transform: translateX(-140px);
+	transition: transform var(--transition-in);*/
+}
+
+.showRightMenu {
+	/*transform: translateX(0px);
+	transition: transform var(--transition-out);*/
+}

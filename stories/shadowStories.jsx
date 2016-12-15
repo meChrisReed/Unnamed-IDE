@@ -18,6 +18,7 @@ const shadowStories = ({
   linkTo
 }) => storiesOf.addWithInfo(
   'DOM hover',
+	'path: app/components/stylize/Shadow.jsx',
   () => (
 		<div>
 			<StoryUtilMargin>

@@ -1,0 +1,15 @@
+.Foreground {
+	width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px);
+	height: 100%;
+	margin: var(--margin) calc(34px + var(--margin));
+	position: absolute;
+	top: 0;
+	right: 0;
+	transition-property: width;
+	transition-duration: var(--transition-in);
+}
+.leftMenuSpae {
+	width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px - 140px);
+	transition-property: width;
+	transition-duration: var(--transition-in)
+}

@@ -1,15 +1,73 @@
 .Foreground {
 	width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px);
 	height: 100%;
-	margin: var(--margin) calc(34px + var(--margin));
-	position: absolute;
+	margin: var(--margin) calc(34px + var(--margin) + var(--padding));
+	position: relative;;
 	top: 0;
 	right: 0;
 	transition-property: width;
 	transition-duration: var(--transition-in);
+	float: left;
 }
-.leftMenuSpae {
-	width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px - 140px);
-	transition-property: width;
-	transition-duration: var(--transition-in)
+.leftMenuSpace {
+	animation-fill-mode: forwards;
+	animation-name: leftMenuSpace;
+	animation-duration: var(--transition-in);
+}
+.closeLeftMenuSpace {
+	animation-fill-mode: forwards;
+	animation-name: closeLeftMenuSpace;
+	animation-duration: var(--transition-in);
+}
+.rightMenuSpace {
+	animation-fill-mode: forwards;
+	animation-name: rightMenuSpace;
+	animation-duration: var(--transition-in);
+}
+.closeRightMenuSpace {
+	animation-fill-mode: forwards;
+	animation-name: closeRightMenuSpace;
+	animation-duration: var(--transition-in);
+}
+/* TODO use key frames to transfer float left and right */
+@keyframes leftMenuSpace {
+  0% {
+		float: right;
+		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px);
+	}
+  100% {
+		float: right;
+		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px - 140px);
+	}
+}
+@keyframes closeLeftMenuSpace {
+  0% {
+		float: right;
+		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px - 140px);
+	}
+  100% {
+		float: right;
+		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px);
+	}
+}
+
+@keyframes rightMenuSpace {
+  0% {
+		float: left;
+		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px);
+	}
+  100% {
+		float: left;
+		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px - 250px);
+	}
+}
+@keyframes closeRightMenuSpace {
+  0% {
+		float: left;
+		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px - 250px);
+	}
+  100% {
+		float: left;
+		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px);
+	}
 }

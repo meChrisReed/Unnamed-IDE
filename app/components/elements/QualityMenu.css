@@ -1,0 +1,21 @@
+.QualityMenu {
+	display: inline-block;
+	width: 34px;
+	padding-top: var(--padding);
+	padding-right: var(--padding);
+	position: fixed;
+	cursor: pointer;
+	overflow: hidden;
+	right: 0;
+	transition: width var(--transition-in);
+}
+
+.open {
+	width: 300px;
+	transition: width var(--transition-out);
+}
+
+.children {
+	float: right;
+	width: 300px;
+}

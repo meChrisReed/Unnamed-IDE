@@ -4,18 +4,18 @@ import Shadow from 'app/components/stylize/Shadow'
 
 import styles from './Stage.css'
 
-const Stage = ({ children, leftMenuSpae }) =>
+const Stage = ({ children, leftMenuSpace }) =>
 <div
 	className={[
 		styles.wrap,
-		leftMenuSpae ? styles.leftMenuSpae : ''
+		leftMenuSpace ? styles.leftMenuSpace : ''
 	].join(' ')}
 >
 	<Shadow force fillWidth depth="high">
 		<div
 			className={[
 			styles.Stage,
-			leftMenuSpae ? styles.leftMenuSpae : ''
+			leftMenuSpace ? styles.leftMenuSpace : ''
 		].join(' ')}>
 			{ children }
 		</div>
@@ -30,7 +30,7 @@ const Stage = ({ children, leftMenuSpae }) =>
 // window.innerWidth - 14 - 14 - 34 - 140
 
 // style={{
-// 	transform: leftMenuSpae ?
+// 	transform: leftMenuSpace ?
 // 		`translateX(-${140/2}px) scaleX(${ (window.innerWidth - 14 - 14 - 34 - 140) / (window.innerWidth - 14 - 14 - 34) })` :
 // 		''
 // }}

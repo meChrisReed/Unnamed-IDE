@@ -7,7 +7,12 @@
 	position: fixed;
 	transition: width var(--transition-in);
 }
-.Menu:hover {
+
+/* TODO don't use :hover
+	manange this state with mouse events
+	affording the abuuty to handle clicking, and keeping the foreground small
+ */
+.open {
 	width: 174px;
 	transition: width var(--transition-out);
 }

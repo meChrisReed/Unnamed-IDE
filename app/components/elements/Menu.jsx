@@ -3,8 +3,11 @@ import ui from 'redux-ui'
 
 import styles from './Menu.css'
 
-const Menu = ({ ui, updateUI, children }) => <div
-	className={ styles.Menu }
+const Menu = ({ children, itemOpen, showLeftMenu }) => <div
+	className={[
+		styles.Menu,
+		showLeftMenu === 'icons-and-text' ? styles.open : ''
+	].join(' ')}
 >
 	<div
 		className={ styles.children }
@@ -18,10 +21,4 @@ Menu.propTypes = {
 	text: React.PropTypes.string
 }
 
-const MenuUi = ui({
-	state: {
-		hover: false
-	}
-})(Menu)
-
-export default MenuUi
+export default Menu

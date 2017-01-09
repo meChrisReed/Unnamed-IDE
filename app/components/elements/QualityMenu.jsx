@@ -3,12 +3,13 @@ import ui from 'redux-ui'
 
 import styles from './QualityMenu.css'
 
-const QualityMenu = ({ ui, updateUI, children }) => <div
-	className={ styles.QualityMenu }
+const QualityMenu = ({ showRightMenu, children }) => <div
+	className={[
+		styles.QualityMenu,
+		showRightMenu === 'icons-and-text' ? styles.open : ''
+	].join(" ")}
 >
-	<div
-		className={ styles.children }
-	>
+	<div className={ styles.children } >
 		{	children }
 	</div>
 </div>
@@ -18,10 +19,4 @@ QualityMenu.propTypes = {
 	text: React.PropTypes.string
 }
 
-const QualityMenuUi = ui({
-	state: {
-		hover: false
-	}
-})(QualityMenu)
-
-export default QualityMenuUi
+export default QualityMenu

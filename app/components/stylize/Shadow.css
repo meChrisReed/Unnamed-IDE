@@ -3,7 +3,7 @@
   display: inline-block;
   position: relative;
 	/*float: left;*/
-	border-radius: 3px;
+	border-radius: calc(--border-radious) + 1px;
 }
 .Shadow:before {
   content: "";
@@ -14,6 +14,7 @@
 	border-radius: 3px;
   opacity: 0.01;
   transition: opacity var(--transition-in);
+	border-radius: calc(--border-radious) + 1px;
 }
 .Shadow:hover {
 	z-index: 10;
@@ -24,8 +25,9 @@
 }
 
 .ChildContext {
-  opacity: 0.99;
+  opacity: 0.99999;
 	display: flex;
+	border-radius: calc(--border-radious) + 1px;
 }
 
 .high:before {

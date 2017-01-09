@@ -11,10 +11,14 @@
 	background: var(--background);
 	border-radius: var(--border-radius);
 	transition-property: transform;
-	transition-duration: var(--transition-in)
+	transition-duration: var(--transition-in);
+
+	border-width: 1px;
+	border-style: solid;
+	border-image: linear-gradient(to top, var(--background), hsla(0, 0%, 100%, 0.1)) 1 99%;
 }
 
-.leftMenuSpae {
+.leftMenuSpace {
 	transition-property: transform;
 	transition-duration: var(--transition-in);
 }

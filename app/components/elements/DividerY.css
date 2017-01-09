@@ -1,0 +1,14 @@
+.DividerY {
+	width: 1px;
+	position: relative;
+	float: left;
+	min-height: 34px;
+	height: 100%;
+	background-color: var(--interactive-accent);
+	margin-right: var(--margin);
+}
+
+.flip {
+	margin-right: 0;
+	margin-left: var(--margin);
+}

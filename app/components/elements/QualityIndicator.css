@@ -1,0 +1,42 @@
+.context {
+	padding: 5px 7px;
+	display: inline-block;
+}
+
+.QualityIndicator {
+	height: 20px;
+	width: 20px;
+	display: inline-block;
+	border-radius: calc(var(--border-radius) + 1px);
+}
+
+.sev1 {
+	background: var(--quality-sev-one);
+}
+.sev2 {
+	background: var(--quality-sev-two);
+}
+.sev3 {
+	background: var(--quality-sev-three);
+}
+.sev4 {
+	background: var(--quality-sev-four);
+}
+.sev5 {
+	background: var(--quality-sev-five);
+}
+.sev6 {
+	background: var(--quality-sev-six);
+}
+.sev7 {
+	background: var(--quality-sev-seven);
+}
+.sev8 {
+	background: var(--quality-sev-eight);
+}
+.sev9 {
+	background: var(--quality-sev-nine);
+}
+.sev10 {
+	background: var(--quality-sev-ten);
+}

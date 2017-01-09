@@ -1,10 +1,15 @@
 import React from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import ui from 'redux-ui'
 
+import openMenuItem from 'app/actions/openMenuItem'
+
 import ReadingList from 'app/components/typography/ReadingList'
-import Icon from 'app/components/elements/Icon.jsx'
+import QualityIndicator from 'app/components/elements/QualityIndicator.jsx'
 import DividerY from 'app/components/elements/DividerY'
 import TextShadow from 'app/components/stylize/TextShadow'
+import Icon from 'app/components/elements/Icon'
 
 import styles from './QualityMenuItem.css'
 
@@ -20,9 +25,12 @@ const right = ({ children }) => <div
 const QualityMenuItem = ({
 	ui,
 	updateUI,
-	icon = 'folder',
+	id,
+	openMenuItem,
+	quality = 1,
 	text = 'Hello Menu Item!',
-	showRightMenu = false
+	showRightMenu = false,
+	icon
 }) => <span
 	onMouseEnter={ e => updateUI({ hover: true })}
 	onMouseLeave={ e => updateUI({ hover: false })}
@@ -30,16 +38,21 @@ const QualityMenuItem = ({
 		styles.QualityMenuItem,
 		showRightMenu ? styles.showRightMenu : ''
 	].join(' ')}
+	onClick={ e => openMenuItem(id) }
 >
 	<TextShadow force={ui.hover}>
 		<ReadingList>{ text }</ReadingList>
 	</TextShadow>
-	<DividerY/>
-	<Icon force={ui.hover} name={ icon } />
+	<DividerY flip/>
+	{
+		icon ?
+			<Icon name={icon} force={ui.hover}/> :
+			<QualityIndicator force={ui.hover} quality={ quality } />
+	}
 </span>
 
 QualityMenuItem.propTypes = {
-	icon: React.PropTypes.string,
+	quality: React.PropTypes.number,
 	text: React.PropTypes.string
 }
 
@@ -49,4 +62,9 @@ const QualityMenuItemUi = ui({
 	}
 })(QualityMenuItem)
 
-export default QualityMenuItemUi
+export default connect(
+	() => ({}),
+	dispatch => bindActionCreators({
+		openMenuItem
+	}, dispatch)
+)(QualityMenuItemUi)

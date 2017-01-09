@@ -8,10 +8,11 @@ import CodeHeading from 'app/components/typography/CodeHeading'
 import CodeBody from 'app/components/typography/CodeBody'
 import Menu from 'app/components/elements/Menu'
 import MenuItem from 'app/components/elements/MenuItem'
+import QualityMenu from 'app/components/elements/QualityMenu'
 import QualityMenuItem from 'app/components/elements/QualityMenuItem'
 import Foreground from 'app/components/elements/Foreground'
 
-const Editor = ({ ui, updateUI }) => <div
+const Editor = ({ ui, updateUI, projectMenu, qualityMenu }) => <div
 	style={{
 		position: 'relative'
 	}}
@@ -19,24 +20,51 @@ const Editor = ({ ui, updateUI }) => <div
 	<div
 		style={{ display: 'inline-flex', position: 'absolute' }}
 		onMouseEnter={ e => updateUI({
-			showLeftMenu: true
+			showLeftMenu: 'icons-and-text',
+			showRightMenu: 0
 		})}
 		onMouseLeave={ e => updateUI({
-			showLeftMenu: false
+			showLeftMenu: 'icons',
+			showRightMenu: 0
 		})}
 	>
-		<Menu>
-			<MenuItem icon='folder' text='Explore Files'/>
-			<MenuItem icon='history' text='Recent Files'/>
-			<MenuItem icon='git' text='View Diff'/>
-			<MenuItem icon='trace' text='Explore Symbols'/>
-			<MenuItem icon='pinLeft' text='Always Show'/>
+		<Menu
+			showLeftMenu={ ui.showLeftMenu }
+			itemOpen={ projectMenu.reduce( (p, c) => p || c.open, false ) }
+		>
+			{ projectMenu.map( i => <MenuItem key={ i.id } {...i}/> ) }
 		</Menu>
 	</div>
 
-	<Foreground leftMenuSpae={ ui.showLeftMenu }>
+	<div
+		style={{ display: 'inline-flex', position: 'absolute', right: 0 }}
+		onMouseEnter={ e => updateUI({
+			showRightMenu: 'icons-and-text',
+			showLeftMenu: 0
+		})}
+		onMouseLeave={ e => updateUI({
+			showRightMenu: 'icons',
+			showLeftMenu: 0
+		})}
+	>
+		<QualityMenu showRightMenu={ui.showRightMenu}>
+			{
+				qualityMenu.map(
+					i => <QualityMenuItem
+						key={i.id}
+						id={i.id}
+						text={i.text}
+						quality={i.quality}
+						icon={i.icon}
+					/>
+				)
+			}
+		</QualityMenu>
+	</div>
+
+	<Foreground leftMenuSpace={ ui.showLeftMenu } rightMenuSpace={ ui.showRightMenu }>
 		<CodeHeading> SomeText.jsx </CodeHeading>
-		<Stage leftMenuSpae={ ui.showLeftMenu }>
+		<Stage>
 			<div style={{
 					height: '120vh',
 				}}>
@@ -48,12 +76,17 @@ const Editor = ({ ui, updateUI }) => <div
 
 const EditorUi = ui({
 	state: {
-		showLeftMenu: false,
-		showRightMenu: false
+		key: 'Editor',
+		showLeftMenu: 0,
+		// 0, 'icons', 'icons-and-text', 'icons-and-menu-open'
+		showRightMenu: 0
 	}
 })(Editor)
 
 export default connect(
-  () => ({}),
+  store => ({
+		projectMenu: store.projectMenu,
+		qualityMenu: store.qualityMenu
+	}),
   () => ({})
 )(EditorUi)

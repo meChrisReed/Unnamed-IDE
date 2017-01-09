@@ -5,6 +5,11 @@
 	max-width: 500px;
 }
 
+.context {
+	display: inline-block;
+	padding: var(--padding);
+}
+
 /*
 scroll gradient:
 linear-gradient(to top, rgb(55, 71, 79) 0%, rgba(55,71,79,0) 100%)

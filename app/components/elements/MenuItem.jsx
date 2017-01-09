@@ -1,4 +1,6 @@
 import React from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import ui from 'redux-ui'
 
 import ReadingList from 'app/components/typography/ReadingList'
@@ -6,9 +8,14 @@ import Icon from 'app/components/elements/Icon.jsx'
 import DividerY from 'app/components/elements/DividerY'
 import TextShadow from 'app/components/stylize/TextShadow'
 
-const MenuItem = ({ ui, updateUI, icon = 'folder', text = 'Hello Menu Item!' }) => <span
+import openMenuItem from 'app/actions/openMenuItem'
+
+const MenuItem = ({ ui, updateUI, icon = 'folder', text = 'Hello Menu Item!', id, openMenuItem }) => <span
 	onMouseEnter={ e => updateUI({ hover: true })}
 	onMouseLeave={ e => updateUI({ hover: false })}
+	onClick={ e => {
+		openMenuItem(id)
+	} }
 	style={{
 		float: 'left',
 		clear: 'both'
@@ -32,4 +39,9 @@ const MenuItemUi = ui({
 	}
 })(MenuItem)
 
-export default MenuItemUi
+export default connect(
+	() => ({}),
+	dispatch => bindActionCreators({
+		openMenuItem
+	}, dispatch)
+)(MenuItemUi)

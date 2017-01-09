@@ -51,6 +51,7 @@ const Editor = ({ ui, updateUI, projectMenu, qualityMenu }) => <div
 			{
 				qualityMenu.map(
 					i => <QualityMenuItem
+						open={i.open}
 						key={i.id}
 						id={i.id}
 						text={i.text}

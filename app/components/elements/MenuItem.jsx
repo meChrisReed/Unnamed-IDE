@@ -10,16 +10,18 @@ import TextShadow from 'app/components/stylize/TextShadow'
 
 import openMenuItem from 'app/actions/openMenuItem'
 
-const MenuItem = ({ ui, updateUI, icon = 'folder', text = 'Hello Menu Item!', id, openMenuItem }) => <span
+import styles from './MenuItem.css'
+
+const MenuItem = ({ ui, updateUI, open, icon = 'folder', text = 'Hello Menu Item!', id, openMenuItem }) => <span
 	onMouseEnter={ e => updateUI({ hover: true })}
 	onMouseLeave={ e => updateUI({ hover: false })}
 	onClick={ e => {
 		openMenuItem(id)
 	} }
-	style={{
-		float: 'left',
-		clear: 'both'
-	}}
+	className={[
+		styles.MenuItem,
+		open ? styles.open : ''
+	].join(" ")}
 >
 	<Icon force={ui.hover} name={ icon } />
 	<DividerY/>

@@ -26,6 +26,7 @@ const QualityMenuItem = ({
 	ui,
 	updateUI,
 	id,
+	open,
 	openMenuItem,
 	quality = 1,
 	text = 'Hello Menu Item!',
@@ -36,7 +37,8 @@ const QualityMenuItem = ({
 	onMouseLeave={ e => updateUI({ hover: false })}
 	className={[
 		styles.QualityMenuItem,
-		showRightMenu ? styles.showRightMenu : ''
+		showRightMenu ? styles.showRightMenu : '',
+		open ? styles.open : ''
 	].join(' ')}
 	onClick={ e => openMenuItem(id) }
 >

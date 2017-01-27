@@ -1,7 +1,7 @@
 .Foreground {
-	width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px);
+	width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 48px - 48px);
 	height: 100%;
-	margin: var(--margin) calc(34px + var(--margin) + var(--padding));
+	margin: var(--margin) calc(48px + var(--margin) + var(--padding));
 	position: relative;;
 	top: 0;
 	right: 0;
@@ -33,41 +33,41 @@
 @keyframes leftMenuSpace {
   0% {
 		float: right;
-		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px);
+		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 48px - 48px);
 	}
   100% {
 		float: right;
-		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px - 140px);
+		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 48px - 48px - 140px);
 	}
 }
 @keyframes closeLeftMenuSpace {
   0% {
 		float: right;
-		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px - 140px);
+		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 48px - 48px - 140px);
 	}
   100% {
 		float: right;
-		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px);
+		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 48px - 48px);
 	}
 }
 
 @keyframes rightMenuSpace {
   0% {
 		float: left;
-		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px);
+		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 48px - 48px);
 	}
   100% {
 		float: left;
-		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px - 250px);
+		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 48px - 48px - 250px);
 	}
 }
 @keyframes closeRightMenuSpace {
   0% {
 		float: left;
-		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px - 250px);
+		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 48px - 48px - 250px);
 	}
   100% {
 		float: left;
-		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 34px - 34px);
+		width: calc(100vw - var(--padding) - var(--padding) - var(--padding) - 48px - 48px);
 	}
 }

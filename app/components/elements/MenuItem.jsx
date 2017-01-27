@@ -12,10 +12,20 @@ import openMenuItem from 'app/actions/openMenuItem'
 
 import styles from './MenuItem.css'
 
-const MenuItem = ({ ui, updateUI, open, icon = 'folder', text = 'Hello Menu Item!', id, openMenuItem }) => <span
+const MenuItem = ({
+	ui,
+	updateUI,
+	open,
+	icon = 'folder',
+	text = 'Hello Menu Item!',
+	id,
+	openMenuItem,
+	openMenuItemUi
+}) => <span
 	onMouseEnter={ e => updateUI({ hover: true })}
 	onMouseLeave={ e => updateUI({ hover: false })}
 	onClick={ e => {
+		openMenuItemUi()
 		openMenuItem(id)
 	} }
 	className={[

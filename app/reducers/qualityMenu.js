@@ -73,7 +73,6 @@ const qualityMenu = (
 ) => {
 	switch (type) {
 		case 'OPEN_MENU_ITEM':
-		console.log('in reducer', id)
 			return state.map(
 				i => i.id === id ?
 					{ ...i, open: true } : { ...i, open: false }

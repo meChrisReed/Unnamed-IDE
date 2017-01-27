@@ -2,4 +2,5 @@
 	/* weight variant stretch height/line name */
 	font: lighter normal normal 16px/34px Arial;
 	color: var(--bright);
+	padding: 0 5px;
 }

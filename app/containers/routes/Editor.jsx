@@ -32,8 +32,13 @@ const Editor = ({ ui, updateUI, projectMenu, qualityMenu }) => <div
 			showLeftMenu={ ui.showLeftMenu }
 			itemOpen={ projectMenu.reduce( (p, c) => p || c.open, false ) }
 		>
-			{ projectMenu.map( i => <MenuItem key={ i.id } {...i}/> ) }
+			{ projectMenu.map( i => <MenuItem
+				key={ i.id }
+				{...i}
+				openMenuItemUi={ () => updateUI({ showLeftMenu: 'icons-and-menu-open' })}
+			/> ) }
 		</Menu>
+		<div className='temp-open-menu'></div>
 	</div>
 
 	<div
@@ -51,12 +56,9 @@ const Editor = ({ ui, updateUI, projectMenu, qualityMenu }) => <div
 			{
 				qualityMenu.map(
 					i => <QualityMenuItem
-						open={i.open}
 						key={i.id}
-						id={i.id}
-						text={i.text}
-						quality={i.quality}
-						icon={i.icon}
+						{ ...i }
+						openMenuItemUi={ () => updateUI({ showRightMenu: 'icons-and-menu-open' })}
 					/>
 				)
 			}

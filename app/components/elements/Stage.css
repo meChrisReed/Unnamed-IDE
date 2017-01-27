@@ -24,6 +24,7 @@
 }
 .wrap {
 	width: 100%;
+	margin-top: 7px;
 	margin-bottom: calc(34px + var(--margin));
 	transition-property: transform;
 	transition-duration: var(--transition-in)
